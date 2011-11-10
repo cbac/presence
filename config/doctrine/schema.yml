@@ -1,0 +1,44 @@
+Groupe:
+  columns:
+    nom: { type: string(10), notnull:true, unique: true }
+
+Person:
+  columns:
+    uid: { type: integer, notnull: true }
+    civ: { type: string(6), notnull: true }
+    lastname: { type: string(60), notnull: true }
+    firstname: { type: string(40), notnull: true }
+    groupe: { type: integer, notnull:true }
+    twin: { type: string(2)}
+  indexes:
+    first_last: { type: unique, fields: [ lastname, firstname ] }
+  relations:
+    Groupe:
+      class: Groupe
+      local: groupe
+      foreign: id
+
+Sequence:
+  columns:
+     nom: { type: string(255), notnull: true, unique: true }
+
+
+Presence:
+  columns:
+    sequence_id :   { type: integer, notnull:true }
+    person_id:  { type: integer, notnull:true }
+  indexes:
+    presence_unique: { type: unique, fields: [ sequence_id, person_id ] }
+  relations:
+    Sequence:
+      type: one
+      class: Sequence
+      local: sequence_id
+      foreign: id
+    Person:
+      type: one
+      class: Person
+      local: person_id
+      foreign: id
+
+

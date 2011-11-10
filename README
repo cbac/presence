@@ -1,0 +1,7 @@
+presence is a project that helps following students presence
+in assigned courses.
+
+It is build out of the symfony sandbox
+
+It is used at Telecom Sudparis to manage the object oriented course
+localy called CSC4002.

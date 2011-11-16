@@ -31,7 +31,7 @@
 		<tfoot>
 			<tr>
 				<td align="center" colspan="3"><input type="submit"
-					value="Sauvegarder" />
+					value="Modifier" />
 				</td>
 			</tr>
 		</tfoot>
@@ -68,5 +68,7 @@
 
 </table>
 
-<br>
-<a href="<?php echo url_for('presence') ?>">retour</a>
+<br /><br />
+<a href="<?php echo url_for('presence') ?>">retour au menu saisie</a>
+<br /><br />
+<a href="<?php echo url_for('listepresence/index') ?>">vers la liste des présences</a>

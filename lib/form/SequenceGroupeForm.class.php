@@ -16,7 +16,8 @@ class SequenceGroupeForm extends sfForm
   {
     $this->setWidgets(array(
       'groupe' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Groupe')),
-      'sequence' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Sequence'))
+      'sequence' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Sequence', 
+      	'order_by'=>array('id','asc')))
     ));
 
     $this->setValidators(array(

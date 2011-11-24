@@ -11,11 +11,15 @@
 
 <table border="1">
 	<thead>
-	<tr>
+		<tr>
 
-		<th>Nom</th>
-		<th>Prenom</th>
-		<th>Groupe</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Groupe</th>
+			
+			
+			
+			
 		<?php 
 		foreach($seqids as $key => $seqid) {
 			echo '<th>'.$sequences[$seqid].'</th>';
@@ -36,6 +40,8 @@
 			</tr>
 		</tfoot>
 		<tbody>
+			
+			
 
 		<?php
 		foreach($gids as $key => $gid) {
@@ -44,9 +50,22 @@
 		foreach($seqids as $key => $seqid) {
 			echo '<input type="hidden" name="seqids['.$key.']" value="'.$seqid.'" />';
 		}
-
+		$lineCount = 0;
+		$curGid = -1;
 		foreach($etudiants as $etudiant){
-
+			if($curGid != -1){
+				if($etudiant->getGroupe()->getId() != $curGid) {
+					$curGid = $etudiant->getGroupe()->getId();
+					// repeat header
+					echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
+					foreach($seqids as $key => $seqid) {
+						echo '<th>'.$sequences[$seqid].'</th>';
+					}
+					echo '</tr>'	;
+				}
+			}else{
+				$curGid = $etudiant->getGroupe()->getId();
+			}
 			echo '<tr>';
 			$uid = $etudiant->getId();
 			echo '<td>'.$etudiant->getLastname().'</td>';
@@ -55,9 +74,9 @@
 
 			foreach($seqids as $seqid){
 				if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
-						echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" checked="checked" /> </td>';
+					echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" checked="checked" /> </td>';
 				}else {
-						echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
+					echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
 				}
 
 			}

@@ -1,15 +1,17 @@
 
 
 
-<h1>
-	Présence modifiée des élèves en CSC4002
-</h1>
+<h1>Présence modifiée des élèves en CSC4002</h1>
 
 <table border="1">
 	<thead>
 		<th>Nom</th>
 		<th>Prenom</th>
 		<th>Groupe</th>
+		
+		
+		
+		
 		<?php 
 			foreach($sequences as $seq) {
 				echo '<th>'.$seq.'</th>';
@@ -22,15 +24,16 @@
 
 		<tfoot>
 			<tr>
-				<td align="center" colspan="3"><input type="submit"
-					value="Modifier" />
+				<td align="center" colspan="3"><input type="submit" value="Modifier" />
 				</td>
 			</tr>
 		</tfoot>
 		<tbody>
+			
+			
 
 		<?php
-
+		$lineCount = 0;
 		foreach($etudiants as $key => $etudiant){
 
 			echo '<tr>';
@@ -41,20 +44,42 @@
 			foreach($sequences as $seq){
 				$seqid = $seq->getId();
 				if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
-					echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" checked="checked" /> </td>';
+					if(isset($added[$uid]) && isset($added[$uid][$seqid])){
+						echo '<td bgcolor="#33FF33">';
+					}else{
+						echo '<td>';
+					}
+					echo '<input type="checkbox" name="presence['.$uid.']['.$seqid.']" checked="checked" /> </td>';
 				}else {
-					echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
+					if(isset($removed[$uid]) && isset($removed[$uid][$seqid])){
+						echo '<td bgcolor="#FFFF33">';
+					}else{
+						echo '<td>';
+					}
+					echo '<input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
 				}
 			}
 			echo '</tr>';
+			echo '</tr>';
+			$lineCount++;
+			if(($lineCount % 30)==0){
+				// repeat header
+				echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
+				foreach($sequences as $seq) {
+					echo '<th>'.$seq.'</th>';
+				}
+				echo '</tr>'	;
+			}
 		}
 		?>
 		</tbody>
 
 </table>
 
-<br /><br />
+<br />
+<br />
 <a href="<?php echo url_for('presence') ?>">retour au menu saisie</a>
-<br /><br />
-<a href="<?php echo url_for('listepresence/index') ?>">vers la liste des présences</a>
-  
+<br />
+<br />
+<a href="<?php echo url_for('listepresence/index') ?>">vers la liste des
+	présences</a>

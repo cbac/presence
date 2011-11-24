@@ -62,6 +62,7 @@ class presenceActions extends sfActions
 		// read the sequences and store them in an array indexed by keys
 		$sequences = Doctrine_Core::getTable('Sequence')
 		->createQuery()
+		->addOrderBy('id')
 		->execute();
 		$this->sequences = array();
 		foreach($sequences as $sequence){
@@ -180,7 +181,8 @@ class presenceActions extends sfActions
 		//$this->redirect('presence/index');
 	}
 	private function modifyPresences($posted){
-		
+		$this->added = array();
+		$this->removed = array();
 		// Fresh information that was not in db must be inserted
 		if(is_array($posted)){
 			foreach($posted as $uid => $values){
@@ -192,6 +194,10 @@ class presenceActions extends sfActions
 							$pres->setPersonId($uid);
 							$pres->save();
 						}
+						if(!array_key_exists($uid, $this->added)){
+							$this->added[$uid]= array();
+						}
+						$this->added[$uid][$seqid] = 'new';
 					}
 				}
 			}
@@ -214,6 +220,10 @@ class presenceActions extends sfActions
 				}
 				if($delete == true){
 //					echo 'should delete '.$uid.':'.$seqid;
+					if(!array_key_exists($uid, $this->removed)){
+						$this->removed[$uid]= array();
+					}
+					$this->removed[$uid][$seqid] = 'new';
 					//information is in database and not in post must be removed from db
 					$presences = Doctrine_Core::getTable('Presence')
 					->createQuery()

@@ -11,11 +11,15 @@
 
 <table border="1">
 	<thead>
-	<tr>
+		<tr>
 
-		<th>Nom</th>
-		<th>Prenom</th>
-		<th>Groupe</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Groupe</th>
+			
+			
+			
+			
 		<?php 
 		foreach($seqids as $key => $seqid) {
 			echo '<th>'.$sequences[$seqid].'</th>';
@@ -30,12 +34,13 @@
 
 		<tfoot>
 			<tr>
-				<td align="center" colspan="3"><input type="submit"
-					value="Modifier" />
+				<td align="center" colspan="3"><input type="submit" value="Modifier" />
 				</td>
 			</tr>
 		</tfoot>
 		<tbody>
+			
+			
 
 		<?php
 		foreach($gids as $key => $gid) {
@@ -44,9 +49,21 @@
 		foreach($seqids as $key => $seqid) {
 			echo '<input type="hidden" name="seqids['.$key.']" value="'.$seqid.'" />';
 		}
-
+		$curGid = -1;
 		foreach($etudiants as $etudiant){
-
+			if($curGid != -1){
+				if($etudiant->getGroupe()->getId() != $curGid) {
+					$curGid = $etudiant->getGroupe()->getId();
+					// repeat header
+					echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
+					foreach($seqids as $key => $seqid) {
+						echo '<th>'.$sequences[$seqid].'</th>';
+					}
+					echo '</tr>'	;
+				}
+			}else{
+				$curGid = $etudiant->getGroupe()->getId();
+			}
 			echo '<tr>';
 			$uid = $etudiant->getId();
 			echo '<td>'.$etudiant->getLastname().'</td>';
@@ -55,9 +72,19 @@
 
 			foreach($seqids as $seqid){
 				if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
-						echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" checked="checked" /> </td>';
+					if(isset($added[$uid]) && isset($added[$uid][$seqid])){
+						echo '<td bgcolor="#33FF33">';
+					}else{
+						echo '<td>';
+					}
+					echo '<input type="checkbox" name="presence['.$uid.']['.$seqid.']" checked="checked" /> </td>';
 				}else {
-						echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
+					if(isset($removed[$uid]) && isset($removed[$uid][$seqid])){
+						echo '<td bgcolor="#FFFF33">';
+					}else{
+						echo '<td>';
+					}
+					echo '<input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
 				}
 
 			}
@@ -68,7 +95,10 @@
 
 </table>
 
-<br /><br />
+<br />
+<br />
 <a href="<?php echo url_for('presence') ?>">retour au menu saisie</a>
-<br /><br />
-<a href="<?php echo url_for('listepresence/index') ?>">vers la liste des présences</a>
+<br />
+<br />
+<a href="<?php echo url_for('listepresence/index') ?>">vers la liste des
+	présences</a>

@@ -30,7 +30,7 @@
 		<tbody>
 
 		<?php
-
+		$lineCount = 0;
 		foreach($etudiants as $key => $etudiant){
 
 			echo '<tr>';
@@ -47,6 +47,16 @@
 				}
 			}
 			echo '</tr>';
+			echo '</tr>';
+			$lineCount++;
+			if(($lineCount % 30)==0){
+				// repeat header
+				echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
+				foreach($sequences as $seq) {
+					echo '<th>'.$seq.'</th>';
+				}
+				echo '</tr>'	;
+			}
 		}
 		?>
 		</tbody>

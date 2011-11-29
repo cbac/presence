@@ -40,6 +40,7 @@ class listepresenceActions extends sfActions
 		// read the sequences and store them in an array indexed by keys
 		$sequences = Doctrine_Core::getTable('Sequence')
 		->createQuery()
+		->addOrderBy('id')
 		->execute();
 		$this->sequences = array();
 		foreach($sequences as $sequence){

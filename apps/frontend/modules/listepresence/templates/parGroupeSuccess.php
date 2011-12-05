@@ -2,9 +2,9 @@
 
 
 <h1>
-	Présence des élèves groupe
+	Pr&eacute;sence des &eacute;l&egrave;ves groupe
 	<?php echo $listGroups ?>
-	<br /> àla seance
+	<br /> &Agrave;�la seance
 	<?php echo $listSeqs ?>
 	CSC4002
 </h1>
@@ -32,8 +32,11 @@
 
 		<?php
 		foreach($etudiants as $key => $etudiant){
-			
-			echo '<tr>';
+			if($etudiant->getTwin() == 'a'){
+				echo '<tr bgcolor="#CCCC99">';
+			}else{
+				echo '<tr>';
+			}
 			echo '<td>'.$etudiant->getLastname().'</td>';
 			echo '<td>'.$etudiant->getFirstname().'</td>';
 			echo '<td align="center">'.$etudiant->getGroupe().'</td>';
@@ -52,7 +55,7 @@
 			echo '</tr>';
 		}
 		?>
-		<tr><td colspan="3">Total par séquence</td>
+		<tr><td colspan="3">Pr&eacute;sence par s&eacute;quence sur : <?php echo count($etudiants); ?> </td>
 		<?php foreach($countSeq as $cseq){
 			echo '<td>'.$cseq.'</td>';
 		}

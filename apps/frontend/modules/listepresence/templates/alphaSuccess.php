@@ -1,13 +1,17 @@
 
 
 
-<h1>Présence des élèves en CSC4002</h1>
+<h1>Pr&eacute;sence des &eacute;l&egrave;ves en CSC4002</h1>
 
 <table border="1">
 	<thead>
 		<th>Nom</th>
 		<th>Prenom</th>
 		<th>Groupe</th>
+		
+		
+		
+		
 		<?php
 		$countSeq = array();
 		foreach($sequences as $seq) {
@@ -19,11 +23,16 @@
 	</thead>
 	<tbody>
 
+
+
 	<?php
 
 	foreach($etudiants as $key => $etudiant){
-
-		echo '<tr>';
+		if($etudiant->getTwin() == 'a' ){
+			echo '<tr bgcolor="#CCCC99">';
+		}else{
+			echo '<tr>';
+		}
 		echo '<td>'.$etudiant->getLastname().'</td>';
 		echo '<td>'.$etudiant->getFirstname().'</td>';
 		echo '<td align="center">'.$etudiant->getGroupe().'</td>';
@@ -40,12 +49,16 @@
 			}
 		}
 		echo '<td>'.$count.'</td>';
-		
+
 		echo '</tr>';
 	}
 	?>
-	<tr>
-	<td colspan="3">Présence par séquence</td>
+		<tr>
+			<td colspan="3">Présence par séquence sur : <?php echo count($etudiants); ?> </td>
+			
+			
+			
+			
 	<?php
 		foreach($countSeq as $count) {
 			echo '<td>'.$count.'</td>';

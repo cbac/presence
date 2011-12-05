@@ -1,7 +1,7 @@
 
 
 
-<h1>Présence modifiée des élèves en CSC4002</h1>
+<h1>Pr&eacute;sence des &eacute;l&egrave;ves en CSC4002</h1>
 
 <table border="1">
 	<thead>

@@ -1,4 +1,4 @@
-<h1>Liste de présence des élèves en CSC4002</h1>
+<h1>Liste de pr&eacute;sence des &eacute;l&egrave;ves en CSC4002</h1>
 
  
 <?php include_partial('formGroup', array('form' => $form,'groupes'=>$groupes,'sequences'=>$sequences)) ?>

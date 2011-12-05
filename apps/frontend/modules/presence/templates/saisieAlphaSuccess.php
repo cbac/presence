@@ -2,7 +2,7 @@
 
 
 <h1>
-	Présence des élèves en CSC4002
+	Pr&eacute;sence des &eacute;l&egrave;ves en CSC4002
 </h1>
 
 <table border="1">

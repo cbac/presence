@@ -2,7 +2,7 @@
 
 
 <h1>
-	Présence des élèves groupe
+	Pr&eacute;sence des &eacute;l&egrave;ves groupe
 	<?php echo $listGroups ?>
 	<br /> àla seance
 	<?php echo $listSeqs ?>

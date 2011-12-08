@@ -243,6 +243,7 @@ class presenceActions extends sfActions
 	{
 		$this->setSequences();
 		$this->setPresences();
+		$this->setGroupes();
 		$this->setEtudiantsParAlpha();
 	}
 	public function executeEnterAlpha(sfWebRequest $request)
@@ -253,6 +254,7 @@ class presenceActions extends sfActions
 			$this->modifyPresences($postedPresences);
 			$this->setSequences();
 			$this->setPresences();
+			$this->setGroupes();
 			$this->setEtudiantsParAlpha();
 		}
 	}

@@ -8,14 +8,14 @@ Person:
     civ: { type: string(6), notnull: true }
     lastname: { type: string(60), notnull: true }
     firstname: { type: string(40), notnull: true }
-    groupe: { type: integer, notnull:true }
+    gid: { type: integer, notnull:true }
     twin: { type: string(2)}
   indexes:
     first_last: { type: unique, fields: [ lastname, firstname ] }
   relations:
     Groupe:
       class: Groupe
-      local: groupe
+      local: gid
       foreign: id
 
 Sequence:

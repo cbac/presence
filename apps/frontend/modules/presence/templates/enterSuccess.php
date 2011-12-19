@@ -2,11 +2,25 @@
 
 
 <h1>
-	Pr&eacute;sence des &eacute;l&egrave;ves groupe
-	<?php echo $listGroups ?>
-	<br /> à la seance
-	<?php echo $listSeqs ?>
-	CSC4002
+	Pr&eacute;sence du module CSC4002 des &eacute;l&egrave;ves
+	<?php
+	if(count($gids)){
+		if(count($gids) == 1){
+			echo ' groupe ' . $listGroups;
+		}else {
+			echo ' groupes ' . $listGroups;
+		}
+	}
+
+	if(count($seqids)){
+		if(count($seqids) == 1){
+			echo '<br /> &agrave; la s&eacute;ance ' . $listSeqs;
+		}else {
+			echo '<br />aux s&eacute;quences ' . $listSeqs;
+		}
+	}
+	?>
+	<br />
 </h1>
 
 <table border="1">
@@ -16,10 +30,6 @@
 			<th>Nom</th>
 			<th>Prenom</th>
 			<th>Groupe</th>
-			
-			
-			
-			
 		<?php 
 		foreach($seqids as $key => $seqid) {
 			echo '<th>'.$sequences[$seqid].'</th>';
@@ -29,7 +39,7 @@
 
 	</tr>
 	</thead>
-	<form action="<?php echo url_for('presence/enterParGroupe') ?>"
+	<form action="<?php echo url_for('presence/enter') ?>"
 		method="post" enctype="multipart/form-data">
 
 		<tfoot>
@@ -39,30 +49,44 @@
 			</tr>
 		</tfoot>
 		<tbody>
-			
-			
-
 		<?php
-		foreach($gids as $key => $gid) {
-			echo '<input type="hidden" name="gids['.$key.']" value="'.$gid.'" />';
+		if(count($gids)){
+			foreach($gids as $key => $gid) {
+				echo '<input type="hidden" name="gids['.$key.']" value="'.$gid.'" />';
+			}
 		}
-		foreach($seqids as $key => $seqid) {
-			echo '<input type="hidden" name="seqids['.$key.']" value="'.$seqid.'" />';
+		echo '<input type="hidden" name="listGroups" value="'.$listGroups.'" />';
+		if(count($seqids)){
+			foreach($seqids as $key => $seqid) {
+				echo '<input type="hidden" name="seqids['.$key.']" value="'.$seqid.'" />';
+			}
 		}
-		$curGid = -1;
+		echo '<input type="hidden" name="listSeqs" value="'.$listSeqs.'" />';
+		$curGid = -1; $nblines=0;
 		foreach($etudiants as $etudiant){
-			if($curGid != -1){
-				if($etudiant->getGroupe()->getId() != $curGid) {
+			if(count($gids)>0){
+				if($curGid != -1){
+					if($etudiant->getGroupe()->getId() != $curGid) {
+						$curGid = $etudiant->getGroupe()->getId();
+						// repeat header
+						echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
+						foreach($seqids as $key => $seqid) {
+							echo '<th>'.$sequences[$seqid].'</th>';
+						}
+						echo '</tr>'	;
+					}
+				}else{
 					$curGid = $etudiant->getGroupe()->getId();
-					// repeat header
+				}
+			}else{
+				$nblines++;
+				if(($nblines % 30) == 0){
 					echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
 					foreach($seqids as $key => $seqid) {
 						echo '<th>'.$sequences[$seqid].'</th>';
 					}
-					echo '</tr>'	;
+					echo '</tr>';
 				}
-			}else{
-				$curGid = $etudiant->getGroupe()->getId();
 			}
 			echo '<tr>';
 			$uid = $etudiant->getId();

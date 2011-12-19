@@ -2,11 +2,25 @@
 
 
 <h1>
-	Pr&eacute;sence des &eacute;l&egrave;ves groupe
-	<?php echo $listGroups ?>
-	<br /> &Agrave; la seance
-	<?php echo $listSeqs ?>
-	CSC4002
+	CSC4002 pr&eacute;sence des &eacute;l&egrave;ves <br />
+	<?php
+	if(count($gids)){
+		if(count($gids) == 1){
+			echo ' groupe ' . $listGroups;
+		}else {
+			echo ' groupes ' . $listGroups;
+		}
+	}
+
+		if(count($seqids)){
+		if(count($seqids) == 1){
+			echo '<br /> &agrave; la s&eacute;quence ' . $listSeqs;
+		}else {
+			echo '<br />aux s&eacute;quences ' . $listSeqs;
+		}
+	}
+	?>
+	
 </h1>
 
 <table border="1">
@@ -39,7 +53,7 @@
 			}
 			echo '<td>'.$etudiant->getLastname().'</td>';
 			echo '<td>'.$etudiant->getFirstname().'</td>';
-			echo '<td align="center">'.$etudiant->getGroupe().'</td>';
+			echo '<td align="center">'.$groupes[$etudiant->getGid()].'</td>';
 			$uid = $etudiant->getId();
 			$count = 0;
 			foreach($seqids as $seqid){

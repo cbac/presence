@@ -35,7 +35,7 @@
 		}
 		echo '<td>'.$etudiant->getLastname().'</td>';
 		echo '<td>'.$etudiant->getFirstname().'</td>';
-		echo '<td align="center">'.$etudiant->getGroupe().'</td>';
+		echo '<td align="center">'.$groupes[$etudiant->getGid()].'</td>';
 		$uid = $etudiant->getId();
 		$count = 0;
 		foreach($sequences as $seq){

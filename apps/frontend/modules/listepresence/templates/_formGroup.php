@@ -7,7 +7,7 @@
       <tr>
       <tr>
         <td colspan="4">
-          <input type="submit" value="Presences par sequence et groupe" />
+          <input type="submit" value="Pr&eacute;sences par s&eacute;quence et groupe" />
         </td>
       </tr>
     </tfoot>

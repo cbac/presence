@@ -68,7 +68,8 @@ class listepresenceActions extends sfActions
 			$formparams=$request->getParameter('sequencegroupe');
 
 			$this->setSequences();
-			if(isset($formparams) && array_key_exists('sequence',$formparams) && is_array($formparams['sequence'])){
+			if(isset($formparams) && array_key_exists('sequence',$formparams) 
+				&& is_array($formparams['sequence']) && count($formparams['sequence'])){
 				$this->seqids = $formparams['sequence'];
 			}else{
 				$this->seqids= array();
@@ -82,30 +83,30 @@ class listepresenceActions extends sfActions
 			}
 			
 			$this->setGroupes();
-			if(isset($formparams) && array_key_exists('sequence',($formparams)) && is_array($formparams['sequence'])){
-				$this->gids = $formparams['groupe'];
-			} else {
-				$this->gids= array();
-				foreach($this->groupes as $group){
-					$this->gids[] = $group->getId();
-				}
-			}
 			$this->listGroups = '';
-			foreach($this->gids as $gid){
-				$this->listGroups .= $this->groupes[$gid];
-			}
-					
-			$this->etudiants = array();
-			foreach($this->gids as $gid){
-				$unGroupe = Doctrine_Core::getTable('Person')
+			$this->gids = array();	
+			if(isset($formparams) && array_key_exists('groupe',$formparams) 
+				&& is_array($formparams['groupe']) && count($formparams['groupe'])){
+				$this->gids = $formparams['groupe'];
+				$this->etudiants = array();
+				foreach($this->gids as $gid){
+					$unGroupe = Doctrine_Core::getTable('Person')
+					->createQuery()
+					->addWhere('gid = '.$gid)
+					->addOrderBy('lastname')
+					->addOrderBy('firstname')
+					->execute();
+					foreach($unGroupe as $unEtudiant){
+						$this->etudiants[] = $unEtudiant;
+					}
+					$this->listGroups .= $this->groupes[$gid];
+				}
+			} else {
+				$this->etudiants = Doctrine_Core::getTable('Person')
 				->createQuery()
-				->addWhere('groupe = '.$gid)
 				->addOrderBy('lastname')
 				->addOrderBy('firstname')
 				->execute();
-				foreach($unGroupe as $unEtudiant){
-					$this->etudiants[] = $unEtudiant;
-				}
 			}
 		}
 	}

@@ -4,8 +4,5 @@
  
 <?php include_partial('formGroup', array('form' => $form,'groupes'=>$groupes,'sequences'=>$sequences)) ?>
  
-<br /> 
-<br /> 
-  <a href="<?php echo url_for('presence/saisieAlpha') ?>">saisie alphab&eacute;tique</a>
 <br />   <br />  
   <a href="<?php echo url_for('listepresence/index') ?>">vers la liste des pr&eacute;sences</a>

@@ -5,8 +5,6 @@
  
 <br /> 
 
-<br /> 
-  <a href="<?php echo url_for('listepresence/alpha') ?>">liste alphabetique</a>
   <br /> 
   <br /> 
   <a href="<?php echo url_for('presence') ?>">vers la saisie</a>

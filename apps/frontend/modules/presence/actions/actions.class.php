@@ -87,7 +87,7 @@ class presenceActions extends sfActions
 		foreach($gids as $gid){
 			$unGroupe = Doctrine_Core::getTable('Person')
 			->createQuery()
-			->addWhere('groupe = '.$gid)
+			->addWhere('gid = '.$gid)
 			->addOrderBy('lastname')
 			->addOrderBy('firstname')
 			->execute();
@@ -103,13 +103,14 @@ class presenceActions extends sfActions
 			->addOrderBy('firstname')
 			->execute();
 	}
-	public function executeParGroupe(sfWebRequest $request)
+	public function executeChoose(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
 			$formparams=$request->getParameter('sequencegroupe');
 
 			$this->setSequences();
-			if(isset($formparams) && array_key_exists('sequence',$formparams) && is_array($formparams['sequence'])){
+			if(isset($formparams) && array_key_exists('sequence',$formparams) 
+				&& is_array($formparams['sequence']) && count($formparams['sequence'])){
 				$this->seqids = $formparams['sequence'];
 			}else{
 				$this->seqids= array();
@@ -124,20 +125,20 @@ class presenceActions extends sfActions
 
 			
 			$this->setGroupes();
-			if(isset($formparams) && array_key_exists('sequence',($formparams)) && is_array($formparams['sequence'])){
+			if(isset($formparams) && array_key_exists('groupe',($formparams)) 
+				&& is_array($formparams['groupe']) && count($formparams['groupe'])){
 				$this->gids = $formparams['groupe'];
+				$this->setEtudiantsParGroupe($this->gids);
 			} else {
+				$this->setEtudiantsParAlpha();
 				$this->gids= array();
-				foreach($this->groupes as $group){
-					$this->gids[] = $group->getId();
-				}
 			}
 			$this->listGroups = '';
 			foreach($this->gids as $gid){
 				$this->listGroups .= $this->groupes[$gid];
 			}
 					
-			$this->setEtudiantsParGroupe($this->gids);
+
 			$uids=array();
 			foreach($this->etudiants as $etudiant){
 				$uids[]=$etudiant->getId();
@@ -146,39 +147,33 @@ class presenceActions extends sfActions
 		}
 	}
 
-	public function executeEnterParGroupe(sfWebRequest $request)
+	public function executeEnter(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
-
 			$postedPresences = $request->getParameter('presence');
-//			print_r($postedPresences);
-			$this->setGroupes();
 			$this->setSequences();
+			$this->setPresences();
+			
 			$this->gids = $request->getParameter('gids');
 			$this->seqids = $request->getParameter('seqids');
-			$this->listGroups = '';
-			foreach($this->gids as $gid){
-				$this->listGroups .= $this->groupes[$gid];
+			if(count($this->gids)){
+				$this->setEtudiantsParGroupe($this->gids);
+			}else{
+				$this->setEtudiantsParAlpha();
 			}
-			$this->listSeqs = '';
-			foreach($this->seqids as $sid){
-				$this->listSeqs .= $this->sequences[$sid].' ';
-			}
-			$this->setEtudiantsParGroupe($this->gids);
-			$uids=array();
-			foreach($this->etudiants as $etudiant){
-				$uids[]=$etudiant->getId();
-			}
-			// Read presences in DB
-			$this->setPresencesWithUids($uids,$this->seqids);
+
 			// Modify db according to postedPresences
 			$this->modifyPresences($postedPresences);
 			// Reread from DB
-			$this->setPresencesWithUids($uids,$this->seqids);
-			
+			if(count($this->gids)){
+				$this->setPresencesWithUids($uids,$this->seqids);
+			}
+			// prepare display of results
+			$this->setGroupes();
+			$this->listGroups = $request['listGroups'];
+			$this->listSeqs = $request['listSeqs'];
+
 		}
-		
-		//$this->redirect('presence/index');
 	}
 	private function modifyPresences($posted){
 		$this->added = array();
@@ -238,77 +233,5 @@ class presenceActions extends sfActions
 			}
 		}
 
-	}
-	public function executeSaisieAlpha(sfWebRequest $request)
-	{
-		$this->setSequences();
-		$this->setPresences();
-		$this->setGroupes();
-		$this->setEtudiantsParAlpha();
-	}
-	public function executeEnterAlpha(sfWebRequest $request)
-	{
-		if($request->isMethod(sfRequest::POST)){
-			$postedPresences = $request->getParameter('presence');
-			$this->setPresences();
-			$this->modifyPresences($postedPresences);
-			$this->setSequences();
-			$this->setPresences();
-			$this->setGroupes();
-			$this->setEtudiantsParAlpha();
-		}
-	}
-	public function executeNew(sfWebRequest $request)
-	{
-		$this->form = new PresenceForm();
-	}
-
-	public function executeCreate(sfWebRequest $request)
-	{
-		$this->forward404Unless($request->isMethod(sfRequest::POST));
-
-		$this->form = new PresenceForm();
-
-		$this->processForm($request, $this->form);
-
-		$this->setTemplate('new');
-	}
-
-	public function executeEdit(sfWebRequest $request)
-	{
-		$this->forward404Unless($presence = Doctrine_Core::getTable('Presence')->find(array($request->getParameter('id'))), sprintf('Object presence does not exist (%s).', $request->getParameter('id')));
-		$this->form = new PresenceForm($presence);
-	}
-
-	public function executeUpdate(sfWebRequest $request)
-	{
-		$this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-		$this->forward404Unless($presence = Doctrine_Core::getTable('Presence')->find(array($request->getParameter('id'))), sprintf('Object presence does not exist (%s).', $request->getParameter('id')));
-		$this->form = new PresenceForm($presence);
-
-		$this->processForm($request, $this->form);
-
-		$this->setTemplate('edit');
-	}
-
-	public function executeDelete(sfWebRequest $request)
-	{
-		$request->checkCSRFProtection();
-
-		$this->forward404Unless($presence = Doctrine_Core::getTable('Presence')->find(array($request->getParameter('id'))), sprintf('Object presence does not exist (%s).', $request->getParameter('id')));
-		$presence->delete();
-
-		$this->redirect('presence/index');
-	}
-
-	protected function processForm(sfWebRequest $request, sfForm $form)
-	{
-		$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-		if ($form->isValid())
-		{
-			$presence = $form->save();
-
-			$this->redirect('presence/edit?id='.$presence->getId());
-		}
 	}
 }

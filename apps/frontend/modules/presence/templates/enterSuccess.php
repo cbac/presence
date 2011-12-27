@@ -50,24 +50,11 @@
 		</tfoot>
 		<tbody>
 		<?php
-		if(count($gids)){
-			foreach($gids as $key => $gid) {
-				echo '<input type="hidden" name="gids['.$key.']" value="'.$gid.'" />';
-			}
-		}
-		echo '<input type="hidden" name="listGroups" value="'.$listGroups.'" />';
-		if(count($seqids)){
-			foreach($seqids as $key => $seqid) {
-				echo '<input type="hidden" name="seqids['.$key.']" value="'.$seqid.'" />';
-			}
-		}
-		echo '<input type="hidden" name="listSeqs" value="'.$listSeqs.'" />';
 		$curGid = -1; $nblines=0;
 		foreach($etudiants as $etudiant){
 			if(count($gids)>0){
 				if($curGid != -1){
-					if($etudiant->getGroupe()->getId() != $curGid) {
-						$curGid = $etudiant->getGroupe()->getId();
+					if($etudiant->getGid() != $curGid) {
 						// repeat header
 						echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
 						foreach($seqids as $key => $seqid) {
@@ -75,9 +62,8 @@
 						}
 						echo '</tr>'	;
 					}
-				}else{
-					$curGid = $etudiant->getGroupe()->getId();
 				}
+				$curGid = $etudiant->getGid();
 			}else{
 				$nblines++;
 				if(($nblines % 30) == 0){
@@ -92,7 +78,7 @@
 			$uid = $etudiant->getId();
 			echo '<td>'.$etudiant->getLastname().'</td>';
 			echo '<td>'.$etudiant->getFirstname().'</td>';
-			echo '<td align="center">'.$etudiant->getGroupe().'</td>';
+			echo '<td align="center">'.$groupes[$etudiant->getGid()].'</td>';
 
 			foreach($seqids as $seqid){
 				if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){

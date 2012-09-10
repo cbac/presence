@@ -14,10 +14,10 @@ class presenceActions extends sfActions
 	{
 		$this->setGroupes();
 		$this->setSequences();
-		$this->form = new SequenceGroupeForm();
+		$this->form = new SequenceGroupForm();
 	}
 	private function setPresences(){
-		$presences = Doctrine_Core::getTable('Presence')
+		$presences = Doctrine_Core::getTable('Attendance')
 		->createQuery()
 		->addOrderBy('person_id')
 		->addOrderBy('sequence_id')
@@ -30,13 +30,13 @@ class presenceActions extends sfActions
 				$this->presences[$uid] = array();
 			}
 			if(!array_key_exists($seqid,$this->presences[$uid])){
-				$this->presences[$uid][$seqid] = 1;
+				$this->presences[$uid][$seqid] = $presence;
 			}
 		}
 		unset($presences); 
 	}
 	private function setPresencesWithUids($uids,$seqids){
-		$presences = Doctrine_Core::getTable('Presence')
+		$presences = Doctrine_Core::getTable('Attendance')
 		->createQuery()
 		->addOrderBy('person_id')
 		->addOrderBy('sequence_id')
@@ -51,7 +51,7 @@ class presenceActions extends sfActions
 						$this->presences[$uid] = array();
 					}
 					if(!array_key_exists($seqid,$this->presences[$uid])){
-						$this->presences[$uid][$seqid] = 1;
+						$this->presences[$uid][$seqid] = $presence;
 					}
 				}
 			}
@@ -72,7 +72,7 @@ class presenceActions extends sfActions
 	}
 	private function setGroupes(){
 		// read the groupes
-		$rawGroupes = Doctrine_Core::getTable('Groupe')
+		$rawGroupes = Doctrine_Core::getTable('StudentGroup')
 		->createQuery()
 		->execute();
 
@@ -112,7 +112,7 @@ class presenceActions extends sfActions
 	public function executeChoose(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
-			$formparams=$request->getParameter('sequencegroupe');
+			$formparams=$request->getParameter('sequencegroup');
 
 			$this->setSequences();
 			if(isset($formparams) && array_key_exists('sequence',$formparams) 
@@ -133,9 +133,9 @@ class presenceActions extends sfActions
 			$this->getUser()->setAttribute('listSeqs', $this->listSeqs);
 			
 			$this->setGroupes();
-			if(isset($formparams) && array_key_exists('groupe',($formparams)) 
-				&& is_array($formparams['groupe']) && count($formparams['groupe'])){
-				$this->gids = $formparams['groupe'];
+			if(isset($formparams) && array_key_exists('group',($formparams)) 
+				&& is_array($formparams['group']) && count($formparams['group'])){
+				$this->gids = $formparams['group'];
 				$this->setEtudiantsParGroupe($this->gids);
 			} else {
 				$this->setEtudiantsParAlpha();
@@ -188,10 +188,18 @@ class presenceActions extends sfActions
 			foreach($posted as $uid => $values){
 				foreach($values as $seqid => $value){
 					if(!isset($this->presences[$uid]) || !isset($this->presences[$uid][$seqid])){
-						if( $value== 'on'){
-							$pres = new Presence();
+						if( $this->sequences[$seqid]->getNote() === False && $value== 'on'){
+							$pres = new Attendance();
 							$pres->setSequenceId($seqid);
 							$pres->setPersonId($uid);
+							$pres->setNote(-1);
+							$pres->save();
+						}
+						if( $this->sequences[$seqid]->getNote() === True){
+							$pres = new Attendance();
+							$pres->setSequenceId($seqid);
+							$pres->setPersonId($uid);
+							$pres->setNote($value);
 							$pres->save();
 						}
 						if(!array_key_exists($uid, $this->added)){
@@ -223,13 +231,20 @@ class presenceActions extends sfActions
 					}
 					$this->removed[$uid][$seqid] = 'removed';
 					//information is in database and not in post must be removed from db
-					$presences = Doctrine_Core::getTable('Presence')
+					// can also be done without select 
+					$presences = Doctrine_Core::getTable('Attendance')
 					->createQuery()
 					->addWhere('person_id = '.$uid)
 					->addWhere('sequence_id = '.$seqid)
 					->execute();
 					$pres = $presences[0];
 					$pres->delete();
+				} else {
+					// check that the note is the same as in db
+					if($value->getNote() != $posted[$uid][$seqid]){
+						$value->setNote($posted[$uid][$seqid]);
+						$value->save();
+					}
 				}
 			}
 		}

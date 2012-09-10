@@ -17,16 +17,27 @@ Person:
       class: Groupe
       local: gid
       foreign: id
-
+      
+ModuleEns:
+  columns:
+     name: { type: string(25), notnull: true, unique: true }
+     
 Sequence:
   columns:
-     nom: { type: string(255), notnull: true, unique: true }
-
+     name: { type: string(25), notnull: true, unique: true }
+     note: {type: boolean }
+     mid: { type: integer, notnull: true}
+  relations:
+     ModSeq:
+       class: ModuleEns
+       local: mid
+       foreign: id
 
 Presence:
   columns:
     sequence_id :   { type: integer, notnull:true }
     person_id:  { type: integer, notnull:true }
+    note: {type: integer }    
   indexes:
     presence_unique: { type: unique, fields: [ sequence_id, person_id ] }
   relations:

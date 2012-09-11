@@ -12,6 +12,7 @@ class presenceActions extends sfActions
 {
 	public function executeIndex(sfWebRequest $request)
 	{
+		$this->moduleens = $this->getUser()->getAttribute('moduleens', array());
 		$this->setGroupes();
 		$this->setSequences();
 		$this->form = new SequenceGroupForm();
@@ -62,6 +63,7 @@ class presenceActions extends sfActions
 		// read the sequences and store them in an array indexed by keys
 		$sequences = Doctrine_Core::getTable('Sequence')
 		->createQuery()
+		->addWhere('mid = ' . $this->moduleens->getId())
 		->addOrderBy('id')
 		->execute();
 		$this->sequences = array();
@@ -74,6 +76,7 @@ class presenceActions extends sfActions
 		// read the groupes
 		$rawGroupes = Doctrine_Core::getTable('StudentGroup')
 		->createQuery()
+		->addWhere('cid = '. $this->moduleens->getCid())
 		->execute();
 
 		$this->groupes = array();
@@ -112,6 +115,7 @@ class presenceActions extends sfActions
 	public function executeChoose(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
+			$this->moduleens = $this->getUser()->getAttribute('moduleens', array());
 			$formparams=$request->getParameter('sequencegroup');
 
 			$this->setSequences();
@@ -158,6 +162,7 @@ class presenceActions extends sfActions
 	public function executeEnter(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
+			$this->moduleens = $this->getUser()->getAttribute('moduleens', array());
 			$postedPresences = $request->getParameter('presence');
 			$this->setSequences();
 			$this->setGroupes();

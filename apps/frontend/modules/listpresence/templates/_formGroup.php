@@ -1,21 +1,21 @@
 <?php use_stylesheets_for_form($form) ?>
 <?php use_javascripts_for_form($form) ?>
 
-<form action="<?php echo url_for('listepresence/parGroupe') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form action="<?php echo url_for('listpresence/display') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
   <table>
     <tfoot>
       <tr>
       <tr>
         <td colspan="4">
-          <input type="submit" value="Pr&eacute;sences par s&eacute;quence et groupe" />
+          <input type="submit" value="Attendance by sequences and groups" />
         </td>
       </tr>
     </tfoot>
     <tbody>
      <tr>
-        <th><?php echo $form['groupe']->renderLabel() ?></th>
+        <th><?php echo $form['group']->renderLabel() ?></th>
         <td>
-          <?php echo $form['groupe']->render(array('size'=>count($groupes))) ?>
+          <?php echo $form['group']->render(array('size'=>count($groups))) ?>
         </td>
             <th><?php echo $form['sequence']->renderLabel() ?></th>
         <td>

@@ -1,6 +1,18 @@
-Groupe:
+College:
   columns:
-    nom: { type: string(10), notnull:true, unique: true }
+    name: { type: string(10), notnull:true, unique: true }
+    
+StudentGroup:
+  columns:
+    name: { type: string(10), notnull:true }
+    cid: {type: integer, notnull: true}
+  indexes:
+    cgt: { type: unique, fields: [name, cid ] }
+  relations:
+    CollegeGroup:
+      class: College
+      local: cid
+      foreign: id
 
 Person:
   columns:
@@ -11,20 +23,26 @@ Person:
     gid: { type: integer, notnull:true }
     twin: { type: string(2)}
   indexes:
-    first_last: { type: unique, fields: [ lastname, firstname ] }
+    first_last: { type: unique, fields: [ lastname, firstname, twin ] }
   relations:
-    Groupe:
-      class: Groupe
+    StudentGroup:
+      class: StudentGroup
       local: gid
       foreign: id
       
 ModuleEns:
   columns:
      name: { type: string(25), notnull: true, unique: true }
-     
+     cid: { type: integer, notnull: true }
+  relations:
+     CollegModule:
+       class: College
+       local: cid
+       foreign: id
+ 
 Sequence:
   columns:
-     name: { type: string(25), notnull: true, unique: true }
+     name: { type: string(25), notnull: true }
      note: {type: boolean }
      mid: { type: integer, notnull: true}
   relations:
@@ -33,11 +51,11 @@ Sequence:
        local: mid
        foreign: id
 
-Presence:
+Attendance:
   columns:
     sequence_id :   { type: integer, notnull:true }
     person_id:  { type: integer, notnull:true }
-    note: {type: integer }    
+    note: {type: integer }
   indexes:
     presence_unique: { type: unique, fields: [ sequence_id, person_id ] }
   relations:
@@ -51,5 +69,4 @@ Presence:
       class: Person
       local: person_id
       foreign: id
-
 

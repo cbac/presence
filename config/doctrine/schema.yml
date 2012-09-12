@@ -20,6 +20,7 @@ Person:
     civ: { type: string(6), notnull: true }
     lastname: { type: string(60), notnull: true }
     firstname: { type: string(40), notnull: true }
+    cid: { type: integer, notnull: true }
     gid: { type: integer, notnull:true }
     twin: { type: string(2)}
   indexes:
@@ -28,6 +29,10 @@ Person:
     StudentGroup:
       class: StudentGroup
       local: gid
+      foreign: id
+    College:
+      class: College
+      local: cid
       foreign: id
       
 ModuleEns:

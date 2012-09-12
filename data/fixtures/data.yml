@@ -1,0 +1,1483 @@
+College:
+  College_1:
+    name: 'TSP'
+  College_2:
+    name: 'TEM'
+
+Person:
+  Person_1:
+    uid: '23016'
+    civ: Mr
+    lastname: ABDEDAYEM
+    firstname: Ghassen
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_2:
+    uid: '23017'
+    civ: Mle
+    lastname: ABDELAZIZ
+    firstname: Hanifa
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_3:
+    uid: '23019'
+    civ: Mr
+    lastname: ASSOU
+    firstname: Mohamed
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_4:
+    uid: '23221'
+    civ: Mr
+    lastname: AZOUNI
+    firstname: Haroun
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_5:
+    uid: '23021'
+    civ: Mr
+    lastname: BACCARI
+    firstname: Ahmed
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_6:
+    uid: '23022'
+    civ: Mle
+    lastname: BADAOUI
+    firstname: Yasmine
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_7:
+    uid: '23023'
+    civ: Mle
+    lastname: BADIANE
+    firstname: Aissatou
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_8:
+    uid: '23026'
+    civ: Mr
+    lastname: BARON
+    firstname: Fabien
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_9:
+    uid: '23222'
+    civ: Mr
+    lastname: BAYEUX
+    firstname: Adrien
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_10:
+    uid: '23030'
+    civ: Mle
+    lastname: BENKIRANE
+    firstname: Karima
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_11:
+    uid: '23223'
+    civ: Mr
+    lastname: BENZAKOUR
+    firstname: Mohammed
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_12:
+    uid: '23031'
+    civ: Mr
+    lastname: BENZEKRI
+    firstname: Mohammed
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_13:
+    uid: '23032'
+    civ: Mr
+    lastname: BERENGER
+    firstname: Olivier
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_14:
+    uid: '23035'
+    civ: Mr
+    lastname: BERNIER
+    firstname: Paul
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_15:
+    uid: '23039'
+    civ: Mle
+    lastname: BLAISOT
+    firstname: Aurelie
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_16:
+    uid: '23040'
+    civ: Mr
+    lastname: BLANC-PATIN
+    firstname: Marc
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_17:
+    uid: '23043'
+    civ: Mr
+    lastname: BOUCHFAA
+    firstname: Samir
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_18:
+    uid: '23044'
+    civ: Mle
+    lastname: BOUMIZA
+    firstname: Ines
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_19:
+    uid: '23045'
+    civ: Mr
+    lastname: BOURAOUI
+    firstname: Sadok
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_20:
+    uid: '23047'
+    civ: Mr
+    lastname: BRIAND
+    firstname: Tugdual
+    StudentGroup: StudentGroup_1
+    College: College_1
+    twin: null
+  Person_21:
+    uid: '23048'
+    civ: Mr
+    lastname: BROUARD
+    firstname: Paul
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_22:
+    uid: '23037'
+    civ: Mr
+    lastname: BERT
+    firstname: Raphael
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_23:
+    uid: '23052'
+    civ: Mr
+    lastname: CAUDRELIER
+    firstname: Baptiste
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_24:
+    uid: '24030'
+    civ: Mle
+    lastname: GRAMA
+    firstname: Adina
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_25:
+    uid: '23049'
+    civ: Mr
+    lastname: BRUNETTA
+    firstname: Mickael
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_26:
+    uid: '23050'
+    civ: Mle
+    lastname: BUDA
+    firstname: Sophie
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_27:
+    uid: '23051'
+    civ: Mr
+    lastname: BURON
+    firstname: Cedric
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_28:
+    uid: '23053'
+    civ: Mr
+    lastname: CERLES
+    firstname: Clement
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_29:
+    uid: '23055'
+    civ: Mle
+    lastname: CHAHIBI
+    firstname: Nassime
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_30:
+    uid: '23057'
+    civ: Mr
+    lastname: CHARKSI
+    firstname: Ahmed
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_31:
+    uid: '23058'
+    civ: Mr
+    lastname: CHAVOT
+    firstname: Tristan
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_32:
+    uid: '23059'
+    civ: Mr
+    lastname: CHENEBAUX
+    firstname: Maixent
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_33:
+    uid: '23060'
+    civ: Mle
+    lastname: CHERMITI
+    firstname: Souhir
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_34:
+    uid: '23061'
+    civ: Mle
+    lastname: CHEVALIER
+    firstname: Marion
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_35:
+    uid: '23062'
+    civ: Mr
+    lastname: CID
+    firstname: Jean-Baptiste
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_36:
+    uid: '23065'
+    civ: Mle
+    lastname: COURMES-VARGUES
+    firstname: Marianne
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_37:
+    uid: '23320'
+    civ: Mle
+    lastname: COYNE
+    firstname: Christel
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_38:
+    uid: '23225'
+    civ: Mr
+    lastname: DAMNON
+    firstname: Geoffroy
+    StudentGroup: StudentGroup_2
+    College: College_1
+    twin: null
+  Person_39:
+    uid: '23068'
+    civ: Mle
+    lastname: DAVID
+    firstname: Mathilde
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_40:
+    uid: '23069'
+    civ: Mr
+    lastname: DEBURGHGRAEVE
+    firstname: Clement
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_41:
+    uid: '23070'
+    civ: Mr
+    lastname: DESFONDS
+    firstname: Thomas
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_42:
+    uid: '23072'
+    civ: Mr
+    lastname: DUPRAZ
+    firstname: Theophile
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_43:
+    uid: '23073'
+    civ: Mle
+    lastname: 'EL GAOUZI'
+    firstname: Imane
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_44:
+    uid: '23074'
+    civ: Mr
+    lastname: ELAASSAL
+    firstname: Ayoub
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_45:
+    uid: '22992'
+    civ: Mr
+    lastname: OUMZIL
+    firstname: Youness
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_46:
+    uid: '21116'
+    civ: Mr
+    lastname: LACROIX
+    firstname: Camille
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: a
+  Person_47:
+    uid: '23075'
+    civ: Mr
+    lastname: EL-ALEM
+    firstname: Mohamed
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_48:
+    uid: '23076'
+    civ: Mr
+    lastname: ETCHEBERRY
+    firstname: Victor
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_49:
+    uid: '23078'
+    civ: Mr
+    lastname: FADLAOUI
+    firstname: Omar
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_50:
+    uid: '23079'
+    civ: Mr
+    lastname: FAURE
+    firstname: Guillaume
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_51:
+    uid: '23082'
+    civ: Mr
+    lastname: FOLTZ
+    firstname: Arthur
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_52:
+    uid: '23086'
+    civ: Mr
+    lastname: GALL
+    firstname: Pierrick
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_53:
+    uid: '23087'
+    civ: Mr
+    lastname: GANDON
+    firstname: Lorenz
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_54:
+    uid: '23090'
+    civ: Mr
+    lastname: GHARBI
+    firstname: 'Mohamed Mehdi'
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_55:
+    uid: '23271'
+    civ: Mr
+    lastname: GIOVANGIGLI
+    firstname: Antoine
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_56:
+    uid: '23091'
+    civ: Mr
+    lastname: GORDE
+    firstname: Maxence
+    StudentGroup: StudentGroup_3
+    College: College_1
+    twin: null
+  Person_57:
+    uid: '23092'
+    civ: Mr
+    lastname: GRAUX
+    firstname: Damien
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_58:
+    uid: '23321'
+    civ: Mr
+    lastname: 'GUEZ '
+    firstname: Yohan
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_59:
+    uid: '23095'
+    civ: Mr
+    lastname: HAENER
+    firstname: Guillaume
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_60:
+    uid: '23096'
+    civ: Mr
+    lastname: HASCOET
+    firstname: Nicolas
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: ''
+  Person_61:
+    uid: '22071'
+    civ: Mr
+    lastname: JOURDREN
+    firstname: Arthur
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_62:
+    uid: '22073'
+    civ: Mle
+    lastname: KAMMOUN
+    firstname: Amal
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_63:
+    uid: '23107'
+    civ: Mr
+    lastname: LADJIMI
+    firstname: Farid
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_64:
+    uid: '23108'
+    civ: Mle
+    lastname: LAHBABI
+    firstname: Leila
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_65:
+    uid: '23112'
+    civ: Mle
+    lastname: LAVABRE
+    firstname: Aurore
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_66:
+    uid: '23115'
+    civ: Mr
+    lastname: LOUARAK
+    firstname: Soufiane
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_67:
+    uid: '23116'
+    civ: Mr
+    lastname: LUCAS
+    firstname: Charles
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_68:
+    uid: '23118'
+    civ: Mle
+    lastname: MAHO
+    firstname: Anaelle
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_69:
+    uid: '24032'
+    civ: Mr
+    lastname: SCAICEANU
+    firstname: 'Victor Petru'
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_70:
+    uid: '24031'
+    civ: Mle
+    lastname: MANEA
+    firstname: Ioana
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_71:
+    uid: '23156'
+    civ: Mle
+    lastname: BALTA
+    firstname: 'Silvia Ioana'
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: a
+  Person_72:
+    uid: '23120'
+    civ: Mr
+    lastname: MALTRAIT
+    firstname: Leo
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_73:
+    uid: '23121'
+    civ: Mle
+    lastname: MARECAUX
+    firstname: Samantha
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_74:
+    uid: '23122'
+    civ: Mle
+    lastname: MARGUERIT
+    firstname: Manon
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_75:
+    uid: '23956'
+    civ: Mlle
+    lastname: 'FAKAM SIEMBA'
+    firstname: Mylene
+    StudentGroup: StudentGroup_4
+    College: College_1
+    twin: null
+  Person_76:
+    uid: '23123'
+    civ: Mr
+    lastname: MARTIN
+    firstname: Hugo
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_77:
+    uid: '23129'
+    civ: Mle
+    lastname: MRAD
+    firstname: Asma
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_78:
+    uid: '23130'
+    civ: Mr
+    lastname: MUSELLI
+    firstname: Hugo
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_79:
+    uid: '23133'
+    civ: Mle
+    lastname: NGUYEN
+    firstname: Estelle
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_80:
+    uid: '23135'
+    civ: Mle
+    lastname: NIKOLAYEVA
+    firstname: Iryna
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_81:
+    uid: '23136'
+    civ: Mle
+    lastname: OLIVEIRA
+    firstname: Audrey
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_82:
+    uid: '22989'
+    civ: Mle
+    lastname: OMBREDANE
+    firstname: Aurore
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_83:
+    uid: '22990'
+    civ: Mr
+    lastname: OTMAN
+    firstname: Abdulrahman
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_84:
+    uid: '22996'
+    civ: Mr
+    lastname: PETIT
+    firstname: Antoine
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_85:
+    uid: '22998'
+    civ: Mr
+    lastname: REBOUD
+    firstname: Nathan
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_86:
+    uid: '23005'
+    civ: Mle
+    lastname: SACARABANY
+    firstname: Pauline
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_87:
+    uid: '23006'
+    civ: Mr
+    lastname: SANGARE
+    firstname: Amadou
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_88:
+    uid: '23272'
+    civ: 'Mr '
+    lastname: SAUVAGE
+    firstname: Eric
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_89:
+    uid: '23322'
+    civ: Mle
+    lastname: SUIHLI
+    firstname: Ines
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_90:
+    uid: '23009'
+    civ: Mr
+    lastname: TALEB
+    firstname: Youssef
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_91:
+    uid: '23011'
+    civ: Mr
+    lastname: TILLET
+    firstname: Philippe
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_92:
+    uid: '23012'
+    civ: Mle
+    lastname: TOSSOU
+    firstname: Laureen
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_93:
+    uid: '23013'
+    civ: Mle
+    lastname: VENKATESAN
+    firstname: Valerie
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_94:
+    uid: '23323'
+    civ: Mle
+    lastname: ZAHOUANI
+    firstname: Zhineb
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_95:
+    uid: '23324'
+    civ: Mr
+    lastname: ZHOU
+    firstname: Yong
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_96:
+    uid: '22446'
+    civ: Mr
+    lastname: ZEBBOUCHE
+    firstname: Samir
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: a
+  Person_97:
+    uid: '23015'
+    civ: Mr
+    lastname: ABBES
+    firstname: 'Mohamed Salim'
+    StudentGroup: StudentGroup_5
+    College: College_1
+    twin: null
+  Person_98:
+    uid: '23018'
+    civ: Mle
+    lastname: AKPOUE
+    firstname: Ahou
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_99:
+    uid: '23020'
+    civ: Mr
+    lastname: AUGUIN
+    firstname: Nicolas
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_100:
+    uid: '24037'
+    civ: Mle
+    lastname: MESLI
+    firstname: Kamila
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_101:
+    uid: '23025'
+    civ: Mr
+    lastname: BALLESTEROS
+    firstname: Hugo
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_102:
+    uid: '23064'
+    civ: Mr
+    lastname: 'CORSALETTI KANPARIAN'
+    firstname: Maxime
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_103:
+    uid: '23027'
+    civ: Mr
+    lastname: BATAILLE
+    firstname: Arthur
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_104:
+    uid: '23033'
+    civ: Mr
+    lastname: BERGELIN
+    firstname: Baptiste
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_105:
+    uid: '23034'
+    civ: Mr
+    lastname: BERLAND
+    firstname: Clement
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_106:
+    uid: '23224'
+    civ: Mr
+    lastname: BERRADA
+    firstname: Mohamed
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_107:
+    uid: '23036'
+    civ: Mle
+    lastname: 'BERRADA SOUNI'
+    firstname: Salma
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_108:
+    uid: '23041'
+    civ: Mle
+    lastname: BOGAERT
+    firstname: Elodie
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_109:
+    uid: '23148'
+    civ: Mr
+    lastname: CAMARA
+    firstname: Idy
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_110:
+    uid: '23303'
+    civ: Mr
+    lastname: CAMPION
+    firstname: Amaury
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_111:
+    uid: '23054'
+    civ: Mr
+    lastname: CHAAL
+    firstname: Jalal
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_112:
+    uid: '23063'
+    civ: Mr
+    lastname: CISSE
+    firstname: Mohamed
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_113:
+    uid: '23270'
+    civ: Mle
+    lastname: COUTE
+    firstname: Lucie
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_114:
+    uid: '23226'
+    civ: Mr
+    lastname: ERSCHIG
+    firstname: Cyprien
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_115:
+    uid: '23077'
+    civ: Mr
+    lastname: EYMARD
+    firstname: Romain
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_116:
+    uid: '23080'
+    civ: Mr
+    lastname: FERT
+    firstname: Dimitri
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_117:
+    uid: '23081'
+    civ: Mr
+    lastname: FISCHER
+    firstname: Louis
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_118:
+    uid: '23084'
+    civ: Mle
+    lastname: FRADIN
+    firstname: Marine
+    StudentGroup: StudentGroup_6
+    College: College_2
+    twin: null
+  Person_119:
+    uid: '23085'
+    civ: Mr
+    lastname: GABELLA
+    firstname: Etienne
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_120:
+    uid: '23088'
+    civ: Mr
+    lastname: GARIN
+    firstname: Thomas
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_121:
+    uid: '23089'
+    civ: Mle
+    lastname: GAY-PERRET
+    firstname: Ameline
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_122:
+    uid: '22175'
+    civ: Mr
+    lastname: CASTELLI
+    firstname: Raphael
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_123:
+    uid: '24025'
+    civ: Mr
+    lastname: BELGHAZI
+    firstname: Bassim
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_124:
+    uid: '23093'
+    civ: Mr
+    lastname: GUILLAUME
+    firstname: Eric
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_125:
+    uid: '22069'
+    civ: Mr
+    lastname: JIAO
+    firstname: Yang
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: a
+  Person_126:
+    uid: '23094'
+    civ: Mr
+    lastname: 'HADJ TAIEB'
+    firstname: Mahdi
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_127:
+    uid: '23142'
+    civ: Mr
+    lastname: HAN
+    firstname: Xiao
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_128:
+    uid: '23227'
+    civ: Mr
+    lastname: HENNIART
+    firstname: Mathieu
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_129:
+    uid: '23097'
+    civ: Mr
+    lastname: HENRY
+    firstname: Corentin
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_130:
+    uid: '23098'
+    civ: Mr
+    lastname: ISMAILI
+    firstname: Mohammed
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_131:
+    uid: '23099'
+    civ: Mr
+    lastname: JABRI
+    firstname: Mohamed
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_132:
+    uid: '23100'
+    civ: Mr
+    lastname: JABROUNI
+    firstname: Malek
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_133:
+    uid: '23101'
+    civ: Mr
+    lastname: JACQUOT
+    firstname: Vincent
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_134:
+    uid: '23102'
+    civ: Mr
+    lastname: KERVELLA
+    firstname: Jean-Sebastien
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_135:
+    uid: '23103'
+    civ: Mr
+    lastname: KHEMLICHE
+    firstname: Aghiles
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_136:
+    uid: '23104'
+    civ: Mr
+    lastname: KHERIBECHE
+    firstname: Malik
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_137:
+    uid: '23105'
+    civ: Mr
+    lastname: KHSIBA
+    firstname: 'Mohamed Achraf'
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_138:
+    uid: '23106'
+    civ: Mr
+    lastname: KOTARBA
+    firstname: Romain
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_139:
+    uid: '23147'
+    civ: Mle
+    lastname: 'KUITCHENG MAGANG'
+    firstname: 'Omeride Cristelle'
+    StudentGroup: StudentGroup_7
+    College: College_2
+    twin: null
+  Person_140:
+    uid: '23109'
+    civ: Mr
+    lastname: LAMOTHE
+    firstname: Jean-Loup
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_141:
+    uid: '23110'
+    civ: Mr
+    lastname: LARBI
+    firstname: Abbas
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_142:
+    uid: '23002'
+    civ: Mle
+    lastname: ROLLAND
+    firstname: Lucrece
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_143:
+    uid: '23111'
+    civ: Mr
+    lastname: LATOUR
+    firstname: Eric
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_144:
+    uid: '23143'
+    civ: Mr
+    lastname: LIU
+    firstname: Ji
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_145:
+    uid: '23124'
+    civ: Mle
+    lastname: MAYOU
+    firstname: Ilham
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_146:
+    uid: '23125'
+    civ: Mr
+    lastname: MGHAZLI
+    firstname: Zyad
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_147:
+    uid: '23127'
+    civ: Mr
+    lastname: MONTEL
+    firstname: Florent
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_148:
+    uid: '23128'
+    civ: Mle
+    lastname: MOREL
+    firstname: Coralie
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_149:
+    uid: '23146'
+    civ: Mle
+    lastname: 'NANGO TEMAH'
+    firstname: 'Paulette Linda'
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_150:
+    uid: '23056'
+    civ: Mr
+    lastname: CHAPUZET
+    firstname: Benjamin
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_151:
+    uid: '23131'
+    civ: Mr
+    lastname: NARBONI
+    firstname: Jonathan
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_152:
+    uid: '24027'
+    civ: Mr
+    lastname: KACIM
+    firstname: Khalil
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_153:
+    uid: '24028'
+    civ: Mr
+    lastname: MOATASSIM
+    firstname: Mehdi
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_154:
+    uid: '22105'
+    civ: Mr
+    lastname: ROLIN
+    firstname: Guillaume
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: a
+  Person_155:
+    uid: '22991'
+    civ: Mle
+    lastname: OUILLON
+    firstname: Stephanie
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_156:
+    uid: '22993'
+    civ: Mle
+    lastname: 'PELAMI MONGA'
+    firstname: Aurelie
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_157:
+    uid: '22994'
+    civ: Mr
+    lastname: PERONNET
+    firstname: Adrien
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_158:
+    uid: '22995'
+    civ: Mr
+    lastname: PESENTI
+    firstname: Vincent
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_159:
+    uid: '24029'
+    civ: Mr
+    lastname: TOUIL
+    firstname: Mohamed
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_160:
+    uid: '22997'
+    civ: Mr
+    lastname: PRON
+    firstname: Alexandre
+    StudentGroup: StudentGroup_8
+    College: College_2
+    twin: null
+  Person_161:
+    uid: '23229'
+    civ: Mle
+    lastname: PUIBARAUD
+    firstname: Marine
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_162:
+    uid: '22999'
+    civ: Mr
+    lastname: RICHARD
+    firstname: Nicolas
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_163:
+    uid: '23000'
+    civ: Mle
+    lastname: RICHER
+    firstname: Ariane
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_164:
+    uid: '23001'
+    civ: Mr
+    lastname: ROCHE
+    firstname: Maxime
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_165:
+    uid: '23003'
+    civ: Mle
+    lastname: ROUCOU
+    firstname: Anne-Cecile
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_166:
+    uid: '23004'
+    civ: Mr
+    lastname: ROUSSEAU
+    firstname: Sylvain
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_167:
+    uid: '23007'
+    civ: Mle
+    lastname: SERRANO
+    firstname: Lea
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_168:
+    uid: '23144'
+    civ: Mr
+    lastname: SHI
+    firstname: Yi
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_169:
+    uid: '23008'
+    civ: Mr
+    lastname: SOSTHENE
+    firstname: Julien
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_170:
+    uid: '23273'
+    civ: Mle
+    lastname: SOUZA
+    firstname: Pauline
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_171:
+    uid: '23230'
+    civ: Mle
+    lastname: VANDEWOESTYNE
+    firstname: Elodie
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_172:
+    uid: '23231'
+    civ: Mr
+    lastname: VERHEECKE
+    firstname: Allan
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_173:
+    uid: '23150'
+    civ: Mr
+    lastname: WANG
+    firstname: Yue
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_174:
+    uid: '23232'
+    civ: Mle
+    lastname: ZARKA
+    firstname: Jodie
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_175:
+    uid: '23014'
+    civ: Mr
+    lastname: ZERBIB
+    firstname: Daniel
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_176:
+    uid: '23145'
+    civ: Mr
+    lastname: ZHOU
+    firstname: Xiandong
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_177:
+    uid: '22417'
+    civ: Mr
+    lastname: ZOUARI
+    firstname: Slim
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_178:
+    uid: '23126'
+    civ: Mr
+    lastname: MONTABRUN
+    firstname: 'Pierre Edouard'
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_179:
+    uid: '24035'
+    civ: Mr
+    lastname: JI
+    firstname: Cai
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_180:
+    uid: '24036'
+    civ: Mr
+    lastname: GUO
+    firstname: Dongdong
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: null
+  Person_181:
+    uid: '23162'
+    civ: Mr
+    lastname: HASSAINE
+    firstname: Djalal
+    StudentGroup: StudentGroup_9
+    College: College_2
+    twin: a
+StudentGroup:
+  StudentGroup_1:
+    name: A
+    CollegeGroup: College_1
+  StudentGroup_2:
+    name: B
+    CollegeGroup: College_1
+  StudentGroup_3:
+    name: C
+    CollegeGroup: College_1
+  StudentGroup_4:
+    name: D
+    CollegeGroup: College_1
+  StudentGroup_5:
+    name: E
+    CollegeGroup: College_1
+  StudentGroup_6:
+    name: F
+    CollegeGroup: College_2
+  StudentGroup_7:
+    name: G
+    CollegeGroup: College_2
+  StudentGroup_8:
+    name: H
+    CollegeGroup: College_2
+  StudentGroup_9:
+    name: I
+    CollegeGroup: College_2

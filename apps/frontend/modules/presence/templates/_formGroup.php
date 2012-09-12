@@ -15,7 +15,7 @@
      <tr>
         <th><?php echo $form['group']->renderLabel() ?></th>
         <td>
-          <?php echo $form['group']->render(array('size'=>count($groupes))) ?>
+          <?php echo $form['group']->render(array('size'=>count($groups))) ?>
         </td>
             <th><?php echo $form['sequence']->renderLabel() ?></th>
         <td>

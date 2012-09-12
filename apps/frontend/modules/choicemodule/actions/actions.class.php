@@ -21,18 +21,21 @@ class choicemoduleActions extends sfActions
 	public function executeChoose(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
-
-			$this->moduleId =$request->getParameter('moduleform')['modulelist'];
+			$moduleform = $request->getParameter('moduleform');
+			$this->moduleId = $moduleform['modulelist'];
 			$modules = Doctrine_Core::getTable('ModuleEns')
 			->createQuery('a')
 			->where('id = '. $this->moduleId)
 			->execute();
+			if(count($modules)>0){
 			$this->getUser()->setAttribute('moduleens', $modules[0]);
-			if($request->getParameter('moduleform')['listormodify'] == 'list'){
-				$this->forward('listpresence','index');
+			if($moduleform['listormodify'] == 0){
+				$this->redirect('listpresence/index');
 			}else{
-				$this->forward('presence','index');
+				$this->redirect('presence/index');
 			}
+			}
+			$this->redirect('choicemodule/index');
 		}
 	}
 }

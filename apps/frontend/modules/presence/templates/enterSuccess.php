@@ -2,7 +2,9 @@
 
 
 <h1>
-	Pr&eacute;sence du module CSC4002 des &eacute;l&egrave;ves
+	Pr&eacute;sence du module
+	<?php echo $moduleens->getName() ?>
+	des &eacute;l&egrave;ves
 	<?php
 	if(count($gids)){
 		if(count($gids) == 1){
@@ -39,15 +41,6 @@
 
 		</tr>
 	</thead>
-	<form action="<?php echo url_for('presence/enter') ?>" method="post"
-		enctype="multipart/form-data">
-
-		<tfoot>
-			<tr>
-				<td align="center" colspan="3"><input type="submit" value="Modifier" />
-				</td>
-			</tr>
-		</tfoot>
 		<tbody>
 			<?php
 			$curGid = -1; $nblines=0;
@@ -78,7 +71,7 @@
 				$uid = $etudiant->getId();
 				echo '<td>'.$etudiant->getLastname().'</td>';
 				echo '<td>'.$etudiant->getFirstname().'</td>';
-				echo '<td align="center">'.$groupes[$etudiant->getGid()].'</td>';
+				echo '<td align="center">'.$groups[$etudiant->getGid()].'</td>';
 
 				foreach($seqids as $seqid){
 					$td = '<td>';
@@ -92,13 +85,13 @@
 								//has been removed => orange
 								$td = '<td bgcolor="#FFFF33">';
 							}
-							if($sequences[$seqid]->getNote()){
-								// this sequence requires a mark
-								$tdcontent = $presences[$uid][$seqid]->getNote();
-							} else {
-								if($presences[$uid][$seqid]->getNote() != 0){
-									$tdcontent = 'X';
-								}
+						}
+						if($sequences[$seqid]->getNote()){
+							// this sequence requires a mark
+							$tdcontent = $presences[$uid][$seqid]->getNote();
+						} else {
+							if($presences[$uid][$seqid]->getNote() != 0){
+								$tdcontent = 'X';
 							}
 						}
 					}
@@ -113,8 +106,11 @@
 
 <br />
 <br />
-<a href="<?php echo url_for('presence/index') ?>">retour au menu saisie</a>
+<a href="<?php echo url_for('presence/index') ?>">retour à la saisie</a>
 <br />
 <br />
 <a href="<?php echo url_for('listpresence/index') ?>">vers la liste des
 	présences</a>
+<br />
+<br />
+<a href="<?php echo url_for('choicemodule/index') ?>">vers le choix des modules </a>

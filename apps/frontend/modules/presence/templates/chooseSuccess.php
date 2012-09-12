@@ -2,7 +2,9 @@
 
 
 <h1>
-	CSC4002 saisie des pr&eacute;sences des &eacute;l&egrave;ves <br />
+	Saisie des pr&eacute;sences des &eacute;l&egrave;ves
+	<?php echo 'de '.$moduleens->getName() ?>
+	<br />
 	<?php
 	if(count($gids)){
 		if(count($gids) == 1){
@@ -83,7 +85,7 @@
 					$uid = $etudiant->getId();
 					echo '<td>'.$etudiant->getLastname().'</td>';
 					echo '<td>'.$etudiant->getFirstname().'</td>';
-					echo '<td align="center">'.$groupes[$etudiant->getGid()].'</td>';
+					echo '<td align="center">'.$groups[$etudiant->getGid()].'</td>';
 
 					foreach($seqids as $seqid){
 						if($sequences[$seqid]->getNote()== False){
@@ -93,46 +95,53 @@
 								echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
 							}
 						} else {
-								if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
-									echo '<td><input type="text" name="presence['.$uid.']['.$seqid.']" value="'.$presences[$uid][$seqid]->getNote().'" /> </td>';
-								}else {
-									echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" /> </td>';
-								}
+							if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
+								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" value="'.$presences[$uid][$seqid]->getNote().'" /> </td>';
+							}else {
+								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" /> </td>';
 							}
-
 						}
-						echo '</tr>';
+
 					}
-				}else{
-					foreach($etudiants as $key => $etudiant){
-							
-						echo '<tr>';
-						echo '<td>'.$etudiant->getLastname().'</td>';
-						echo '<td>'.$etudiant->getFirstname().'</td>';
-						echo '<td align="center">'.$groupes[$etudiant->getGid()].'</td>';
-						$uid = $etudiant->getId();
-						foreach($seqids as $seqid){
+					echo '</tr>';
+				}
+			}else{
+				foreach($etudiants as $key => $etudiant){
+
+					echo '<tr>';
+					echo '<td>'.$etudiant->getLastname().'</td>';
+					echo '<td>'.$etudiant->getFirstname().'</td>';
+					echo '<td align="center">'.$groups[$etudiant->getGid()].'</td>';
+					$uid = $etudiant->getId();
+					foreach($seqids as $seqid){
+						if($sequences[$seqid]->getNote()== False){
 							if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
 								echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" checked="checked" /> </td>';
 							}else {
 								echo '<td><input type="checkbox" name="presence['.$uid.']['.$seqid.']" /> </td>';
 							}
-						}
-						echo '</tr>';
-						echo '</tr>';
-						$lineCount++;
-						if(($lineCount % 30)==0){
-							// repeat header
-							echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
-							foreach($seqids as $seqid) {
-								echo '<th>'.$sequences[$seqid].'</th>';
+						} else {
+							if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
+								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" value="'.$presences[$uid][$seqid]->getNote().'" /> </td>';
+							}else {
+								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" /> </td>';
 							}
-							echo '</tr>'	;
 						}
 					}
+					echo '</tr>';
+					$lineCount++;
+					if(($lineCount % 30)==0){
+						// repeat header
+						echo '<tr>	<th>Nom</th> <th>Prenom</th> <th>Groupe</th>';
+						foreach($seqids as $seqid) {
+							echo '<th>'.$sequences[$seqid].'</th>';
+						}
+						echo '</tr>'	;
+					}
 				}
+			}
 
-				?>
+			?>
 		</tbody>
 
 </table>

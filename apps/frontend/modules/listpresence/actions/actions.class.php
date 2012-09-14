@@ -3,10 +3,9 @@
 /**
  * listpresence actions.
  *
- * @package    sf_sandbox
+ * @package    attendance
  * @subpackage listpresence
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ * @author     Christian Bac
  */
 class listpresenceActions extends sfActions
 {
@@ -16,8 +15,9 @@ class listpresenceActions extends sfActions
   		if($this->moduleens == null){
   			$this->forward('choicemodule','index');
   		}
-		$this->setGroups($this->moduleens->getCid());
-		$this->setSequences($this->moduleens->getId());
+ 		$this->groups = StudentGroupTable::getGroups($this->moduleens->getCid());
+		
+		$this->sequences = SequenceTable::getSequences($this->moduleens->getId());
 
 		$groupchoices = array();
 		foreach($this->groups as $group){
@@ -29,54 +29,8 @@ class listpresenceActions extends sfActions
 		}
 		$this->form = new SequenceGroupForm(array('group'=>$groupchoices, 'sequence'=>$sequencechoices));
 	}
-	private function setAttendances($mid){
-		$attendances = Doctrine_Core::getTable('Attendance')
-		->createQuery('a')
-		->innerJoin('a.Sequence s')
-		->addWhere('s.mid = ' . $mid)
-		->addOrderBy('a.person_id')
-		->addOrderBy('a.sequence_id')
-		->execute();
-		$this->attendances = array();
-		foreach($attendances as $presence){
-			$uid = (int) $presence->getPersonId();
-			$seqid = (int) $presence->getSequenceId();
-			if(!array_key_exists($uid,$this->attendances)){
-				$this->attendances[$uid] = array();
-			}
-			if(!array_key_exists($seqid,$this->attendances[$uid])){
-				$this->attendances[$uid][$seqid] = $presence;
-			}
-		}
 
-		unset($attendances); 
-	}
-	private function setSequences($mid){
-		// read the sequences and store them in an array indexed by keys
-		$sequences = Doctrine_Core::getTable('Sequence')
-		->createQuery('s')
-		->addWhere('s.mid = ' . $mid)
-		->addOrderBy('s.id')
-		->execute();
-		$this->sequences = array();
-		foreach($sequences as $sequence){
-			$this->sequences[$sequence->getId()] = $sequence;
-		}
-		unset($sequences);
-	}
-	private function setGroups($cid){
-		// read the groupes
-		$rawGroupes = Doctrine_Core::getTable('StudentGroup')
-		->createQuery('g')
-		->addWhere('g.cid = '. $cid)
-		->execute();
 
-		$this->groups = array();
-		foreach($rawGroupes as $group){
-			$this->groups[$group->getId()] = $group;
-		}
-		unset($rawGroupes);
-	}
 	public function executeDisplay(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
@@ -84,10 +38,12 @@ class listpresenceActions extends sfActions
 			if($this->moduleens == null){
 				$this->forward('choicemodule','index');
 			}
-			$this->setGroups($this->moduleens->getCid());
-			$this->setSequences($this->moduleens->getId());
+			$this->groups = StudentGroupTable::getGroups($this->moduleens->getCid());
 			
-			$this->setAttendances($this->moduleens->getId());
+			$this->sequences = SequenceTable::getSequences($this->moduleens->getId());
+			
+			$this->attendances = AttendanceTable::getAttendances($this->moduleens->getId());
+			
 			$formparams=$request->getParameter('sequencegroup');
 
 			if(isset($formparams) && array_key_exists('sequence',$formparams) 

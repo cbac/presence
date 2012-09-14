@@ -29,11 +29,13 @@ class listpresenceActions extends sfActions
 		}
 		$this->form = new SequenceGroupForm(array('group'=>$groupchoices, 'sequence'=>$sequencechoices));
 	}
-	private function setAttendances(){
+	private function setAttendances($mid){
 		$attendances = Doctrine_Core::getTable('Attendance')
-		->createQuery()
-		->addOrderBy('person_id')
-		->addOrderBy('sequence_id')
+		->createQuery('a')
+		->innerJoin('a.Sequence s')
+		->addWhere('s.mid = ' . $mid)
+		->addOrderBy('a.person_id')
+		->addOrderBy('a.sequence_id')
 		->execute();
 		$this->attendances = array();
 		foreach($attendances as $presence){
@@ -52,9 +54,9 @@ class listpresenceActions extends sfActions
 	private function setSequences($mid){
 		// read the sequences and store them in an array indexed by keys
 		$sequences = Doctrine_Core::getTable('Sequence')
-		->createQuery()
-		->addWhere('mid = ' . $mid)
-		->addOrderBy('id')
+		->createQuery('s')
+		->addWhere('s.mid = ' . $mid)
+		->addOrderBy('s.id')
 		->execute();
 		$this->sequences = array();
 		foreach($sequences as $sequence){
@@ -65,8 +67,8 @@ class listpresenceActions extends sfActions
 	private function setGroups($cid){
 		// read the groupes
 		$rawGroupes = Doctrine_Core::getTable('StudentGroup')
-		->createQuery()
-		->addWhere('cid = '. $cid)
+		->createQuery('g')
+		->addWhere('g.cid = '. $cid)
 		->execute();
 
 		$this->groups = array();
@@ -85,7 +87,7 @@ class listpresenceActions extends sfActions
 			$this->setGroups($this->moduleens->getCid());
 			$this->setSequences($this->moduleens->getId());
 			
-			$this->setAttendances();
+			$this->setAttendances($this->moduleens->getId());
 			$formparams=$request->getParameter('sequencegroup');
 
 			if(isset($formparams) && array_key_exists('sequence',$formparams) 
@@ -122,8 +124,9 @@ class listpresenceActions extends sfActions
 				}
 			} else {
 				$this->etudiants = Doctrine_Core::getTable('Person')
-				->createQuery()
-				->addWhere('cid = '.$this->moduleens->getCid())
+				->createQuery('p')
+				->innerJoin('p.StudentGroup g')
+				->addWhere('g.cid = '.$this->moduleens->getCid())
 				->addOrderBy('lastname')
 				->addOrderBy('firstname')
 				->execute();

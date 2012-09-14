@@ -29,25 +29,7 @@ class presenceActions extends sfActions
 		}
 		$this->form = new SequenceGroupForm(array('group'=>$groupchoices, 'sequence'=>$sequencechoices));
 	}
-	private function setPresences(){
-		$presences = Doctrine_Core::getTable('Attendance')
-		->createQuery()
-		->addOrderBy('person_id')
-		->addOrderBy('sequence_id')
-		->execute();
-		$this->presences = array();
-		foreach($presences as $presence){
-			$uid = $presence->getPersonId();
-			$seqid = $presence->getSequenceId();
-			if(!array_key_exists($uid,$this->presences)){
-				$this->presences[$uid] = array();
-			}
-			if(!array_key_exists($seqid,$this->presences[$uid])){
-				$this->presences[$uid][$seqid] = $presence;
-			}
-		}
-		unset($presences); 
-	}
+
 	private function setPresencesWithUids($uids,$seqids){
 		$presences = Doctrine_Core::getTable('Attendance')
 		->createQuery()
@@ -74,9 +56,9 @@ class presenceActions extends sfActions
 	private function setSequences($mid){
 		// read the sequences and store them in an array indexed by keys
 		$sequences = Doctrine_Core::getTable('Sequence')
-		->createQuery()
-		->addWhere('mid = ' . $mid)
-		->addOrderBy('id')
+		->createQuery('s')
+		->addWhere('s.mid = ' . $mid)
+		->addOrderBy('s.id')
 		->execute();
 		$this->sequences = array();
 		foreach($sequences as $sequence){
@@ -87,8 +69,8 @@ class presenceActions extends sfActions
 	private function setGroups($cid){
 		// read the groups
 		$rawGroups = Doctrine_Core::getTable('StudentGroup')
-		->createQuery()
-		->addWhere('cid = '. $cid)
+		->createQuery('g')
+		->addWhere('g.cid = '. $cid)
 		->execute();
 
 		$this->groups = array();
@@ -101,10 +83,10 @@ class presenceActions extends sfActions
 		$this->etudiants = array();
 		foreach($gids as $gid){
 			$unGroupe = Doctrine_Core::getTable('Person')
-			->createQuery()
-			->addWhere('gid = '.$gid)
-			->addOrderBy('lastname')	
-			->addOrderBy('firstname')
+			->createQuery('p')
+			->addWhere('p.gid = '.$gid)
+			->addOrderBy('p.lastname')	
+			->addOrderBy('p.firstname')
 			->execute();
 			foreach($unGroupe as $unEtudiant){
 				$this->etudiants[] = $unEtudiant;
@@ -119,8 +101,9 @@ class presenceActions extends sfActions
 	}
 	private function setEtudiantsParAlpha($cid){
 		$this->etudiants = Doctrine_Core::getTable('Person')
-			->createQuery()
-			->addWhere('cid = '.$cid)
+			->createQuery('p')
+			->innerJoin('p.StudentGroup g')
+			->addWhere('g.cid = '.$cid)
 			->addOrderBy('lastname')
 			->addOrderBy('firstname')
 			->execute();

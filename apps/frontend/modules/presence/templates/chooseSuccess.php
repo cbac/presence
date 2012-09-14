@@ -96,9 +96,9 @@
 							}
 						} else {
 							if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
-								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" value="'.$presences[$uid][$seqid]->getNote().'" /> </td>';
+								echo '<td align="right"><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" value="'.$presences[$uid][$seqid]->getNote().'" /> </td>';
 							}else {
-								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" /> </td>';
+								echo '<td align="right"><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" /> &nbsp;</td>';
 							}
 						}
 
@@ -122,9 +122,9 @@
 							}
 						} else {
 							if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
-								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" value="'.$presences[$uid][$seqid]->getNote().'" /> </td>';
+								echo '<td align="right"><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" value="'.$presences[$uid][$seqid]->getNote().'" /> </td>';
 							}else {
-								echo '<td><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" /> </td>';
+								echo '<td align="right"><input type="text" size="5" name="presence['.$uid.']['.$seqid.']" /> </td>';
 							}
 						}
 					}

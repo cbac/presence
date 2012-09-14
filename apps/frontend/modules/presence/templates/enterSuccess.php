@@ -88,6 +88,7 @@
 						}
 						if($sequences[$seqid]->getNote()){
 							// this sequence requires a mark
+							$td = '<td align="right">';
 							$tdcontent = $presences[$uid][$seqid]->getNote();
 						} else {
 							if($presences[$uid][$seqid]->getNote() != 0){

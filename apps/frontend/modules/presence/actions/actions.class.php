@@ -169,11 +169,13 @@ class presenceActions extends sfActions
 				foreach($values as $seqid => $value){
 					if(!isset($this->presences[$uid]) || !isset($this->presences[$uid][$seqid])){
 						if( $this->sequences[$seqid]->getNote() === True){
-							$pres = new Attendance();
-							$pres->setSequenceId($seqid);
-							$pres->setPersonId($uid);
-							$pres->setNote($value);
-							$pres->save();
+							if($value != null){
+								$pres = new Attendance();
+								$pres->setSequenceId($seqid);
+								$pres->setPersonId($uid);
+								$pres->setNote($value);
+								$pres->save();
+							}
 						} else {
 							if($value == 'on'){
 								$pres = new Attendance();

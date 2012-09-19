@@ -1,4 +1,4 @@
-<h1>Attendances Selection for <?php echo $moduleens->getName()?></h1>
+<h1>Sélection des groupes et séquences pour le <?php echo $moduleens->getName()?></h1>
 
 
 <?php include_partial('formGroup', array('form' => $form,'groups'=>$groups,'sequences'=>$sequences)) ?>

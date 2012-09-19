@@ -2,8 +2,9 @@
 
 
 <h1>
-	Students Attendance <br />
+	Présence des étudiants  au module
 	<?php
+	echo $moduleens->getName().'<br />';
 	if(count($gids)){
 		if(count($gids) == 1){
 			echo ' group ' . $listGroups;
@@ -25,9 +26,9 @@
 
 <table border="1">
 	<thead>
-		<th>Lastname</th>
-		<th>Firstname</th>
-		<th>Group</th>
+		<th>Nom</th>
+		<th>Prénom</th>
+		<th>Groupe</th>
 
 		<?php
 		//		foreach($gids as $key => $gid) {
@@ -40,18 +41,15 @@
 			echo '<th>'.$sequences[$seqid].'</th>';
 		}
 		?>
-		<th>Student Sum</th>
-		<th>Student average grade</th>
+		<th>Nombre de présence</th>
 	</thead>
 	<tbody>
 
 		<?php
 		foreach($etudiants as $key => $etudiant){
-			if($etudiant->getTwin() == 'a'){
-				echo '<tr bgcolor="#CCCC99">';
-			}else{
+
 				echo '<tr>';
-			}
+			
 			echo '<td>'.$etudiant->getLastname().'</td>';
 			echo '<td>'.$etudiant->getFirstname().'</td>';
 			echo '<td align="center">'.$groups[$etudiant->getGid()].'</td>';
@@ -79,7 +77,7 @@
 		}
 		?>
 		<tr>
-			<td colspan="3">Attendance count on : <?php echo count($etudiants); ?>
+			<td colspan="3">Nombre total de présences sur : <?php echo count($etudiants); ?>
 			</td>
 			<?php foreach($countSeq as $cseq){
 				echo '<td>'.$cseq.'</td>';
@@ -91,4 +89,4 @@
 </table>
 
 <br>
-<a href="<?php echo url_for('listpresence/index') ?>">back to index</a>
+<a href="<?php echo url_for('listpresence/index') ?>">retour vers le choix des groupes et séquences</a>

@@ -16,14 +16,13 @@ StudentGroup:
 
 Person:
   columns:
-    uid: { type: integer, notnull: true }
+    uid: { type: integer, notnull: true, unique: true }
     civ: { type: string(6), notnull: true }
     lastname: { type: string(60), notnull: true }
     firstname: { type: string(40), notnull: true }
     gid: { type: integer, notnull:true }
-    twin: { type: string(2)}
   indexes:
-    first_last: { type: unique, fields: [ lastname, firstname, twin ] }
+    first_last: { fields: [ lastname, firstname ] }
   relations:
     StudentGroup:
       class: StudentGroup

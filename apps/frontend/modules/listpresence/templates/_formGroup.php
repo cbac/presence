@@ -7,7 +7,7 @@
       <tr>
       <tr>
         <td colspan="4">
-          <input type="submit" value="Attendance by sequences and groups" />
+          <input type="submit" value="Choix des séquences et groupes" />
         </td>
       </tr>
     </tfoot>

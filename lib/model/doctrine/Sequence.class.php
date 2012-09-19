@@ -12,5 +12,5 @@
  */
 class Sequence extends BaseSequence
 {
-	function __toString() { return $this->getNom(); }
+	function __toString() { return $this->getName(); }
 }

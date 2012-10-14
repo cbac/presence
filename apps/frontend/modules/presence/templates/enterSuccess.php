@@ -76,15 +76,14 @@
 				foreach($seqids as $seqid){
 					$td = '<td>';
 					$tdcontent = '&nbsp;';
+					if(isset($removed[$uid]) && isset($removed[$uid][$seqid])){
+						//has been removed => orange
+						$td = '<td bgcolor="#FFFF33">';
+					}
 					if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
 						if(isset($added[$uid]) && isset($added[$uid][$seqid])){
 							//  has been added => green color
 							$td = '<td bgcolor="#33FF33">';
-						}else {
-							if(isset($removed[$uid]) && isset($removed[$uid][$seqid])){
-								//has been removed => orange
-								$td = '<td bgcolor="#FFFF33">';
-							}
 						}
 						if($sequences[$seqid]->getNote()){
 							// this sequence requires a mark

@@ -16,11 +16,11 @@ class ModuleForm extends sfForm
   {
     $this->setWidgets(array(
       'modulelist' => new sfWidgetFormDoctrineChoice(array('multiple' => False, 'model' => 'ModuleEns', 'order_by'=>array('id','asc'))),
-      'listormodify' => new sfWidgetFormChoice(array('choices' => array('list','modify'), 'multiple' => False, 'expanded' => True))
+      'listormodify' => new sfWidgetFormChoice(array('choices' => array('lister les présences','modifier les présences'), 'multiple' => False, 'expanded' => True))
     		));
     $this->setValidators(array(
       'modulelist' => new sfValidatorDoctrineChoice(array('multiple' => False, 'model' => 'ModuleEns', 'required' => true)),
-	  'listormodify' => new sfValidatorChoice(array('multiple'=>false, 'choices' => array('list','modify')))
+	  'listormodify' => new sfValidatorChoice(array('multiple'=>false, 'choices' => array('lister les présences','modifier les présences')))
     		));
     
     $this->widgetSchema->setNameFormat('moduleform[%s]');

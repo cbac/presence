@@ -60,8 +60,8 @@
 				value="Sauvegarder" />
 			</td>
 			<?php 
-			if ($needNote == False ){
-				echo '<td colspan="'.count($seqids).'"><input type="checkbox" id="presence_all">Select All</td>';
+			if ($needNote == False && count($seqids)==1 && count($gids)==1){
+				echo '<td><input type="checkbox" id="presence_all">Select All</td>';
 			}
 			?>
 

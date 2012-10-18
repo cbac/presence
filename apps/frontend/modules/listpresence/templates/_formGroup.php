@@ -6,23 +6,26 @@
     <tfoot>
       <tr>
       <tr>
-        <td colspan="4">
-          <input type="submit" value="Choix des séquences et groupes" />
+        <td colspan="2" align="center">
+          <input type="submit" value="Lister" />
         </td>
       </tr>
     </tfoot>
     <tbody>
      <tr>
         <th><?php echo $form['group']->renderLabel() ?></th>
-        <td>
+
+            <th><?php echo $form['sequence']->renderLabel() ?></th>
+
+      </tr>
+      <tr>
+              <td>
           <?php echo $form['group']->render(array('size'=>count($groups))) ?>
         </td>
-            <th><?php echo $form['sequence']->renderLabel() ?></th>
-        <td>
+                <td>
           <?php echo $form['sequence']->render(array('size'=>count($sequences))) ?>
         </td>
-      </tr>
-    </tfoot>
+        </tr>
     <tbody>
   </table>
 </form>

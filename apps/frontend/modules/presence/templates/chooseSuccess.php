@@ -154,5 +154,11 @@
 
 </table>
 
-<br>
-<a href="<?php echo url_for('presence/index') ?>">retour</a>
+<br />
+<a href="<?php echo url_for('presence/index') ?>">retour au choix des groupes et séquences</a>
+<br />
+<br />
+<a href="<?php echo url_for('listpresence/index') ?>">aller à la liste des présences</a>
+<br />
+<br />
+<a href="<?php echo url_for('choicemodule/index') ?>">retour au choix du module </a>

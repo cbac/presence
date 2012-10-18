@@ -89,4 +89,6 @@
 </table>
 
 <br>
-<a href="<?php echo url_for('listpresence/index') ?>">retour vers le choix des groupes et séquences</a>
+<a href="<?php echo url_for('listpresence/index') ?>">retour au choix des groupes et séquences</a>
+<br />
+<a href="<?php echo url_for('choicemodule/index') ?>">retour au choix du module </a>

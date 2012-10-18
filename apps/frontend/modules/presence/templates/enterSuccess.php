@@ -6,6 +6,7 @@
 	<?php echo $moduleens->getName() ?>
 	des &eacute;l&egrave;ves
 	<?php
+	$debug= false;
 	if(count($gids)){
 		if(count($gids) == 1){
 			echo ' groupe ' . $listGroups;
@@ -19,6 +20,13 @@
 			echo '<br /> &agrave; la s&eacute;ance ' . $listSeqs;
 		}else {
 			echo '<br />aux s&eacute;quences ' . $listSeqs;
+		}
+	}
+	if($debug){
+		foreach ($presences as $uid =>$seqids){
+			foreach($seqids as $sid => $presence){
+				echo $presence->__toString().'<br>';
+			}
 		}
 	}
 	?>
@@ -37,8 +45,6 @@
 				echo '<th>'.$sequences[$seqid].'</th>';
 			}
 			?>
-
-
 		</tr>
 	</thead>
 		<tbody>
@@ -74,28 +80,28 @@
 				echo '<td align="center">'.$groups[$etudiant->getGid()].'</td>';
 
 				foreach($seqids as $seqid){
-					$td = '<td>';
+					$align='"center"';
+					$bgcolor='"#FFFFFF"';
 					$tdcontent = '&nbsp;';
 					if(isset($removed[$uid]) && isset($removed[$uid][$seqid])){
 						//has been removed => orange
-						$td = '<td bgcolor="#FFFF33">';
-					}
-					if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
-						if(isset($added[$uid]) && isset($added[$uid][$seqid])){
-							//  has been added => green color
-							$td = '<td bgcolor="#33FF33">';
-						}
-						if($sequences[$seqid]->getNote()){
-							// this sequence requires a mark
-							$td = '<td align="right">';
-							$tdcontent = $presences[$uid][$seqid]->getNote();
-						} else {
-							if($presences[$uid][$seqid]->getNote() != 0){
+						$bgcolor = '"#FFFF88"';
+					}else{
+						if(isset($presences[$uid]) && isset($presences[$uid][$seqid])){
+							if(isset($added[$uid]) && isset($added[$uid][$seqid])){
+								//  has been added => green color
+								$bgcolor = '"#33FF33"';
+							}
+							if($sequences[$seqid]->getNote()){
+								// this sequence requires a mark
+								$align= '"right"';
+								$tdcontent = $presences[$uid][$seqid]->getNote();
+							} else {
 								$tdcontent = 'X';
 							}
 						}
 					}
-					echo $td.$tdcontent.'</td>';
+					echo '<td bgcolor='.$bgcolor.' align='.$align.'>'.$tdcontent.'</td>';
 				}
 				echo '</tr>';
 			}
@@ -105,8 +111,10 @@
 </table>
 
 <br />
+<a href="<?php echo url_for('presence/choose') ?>">retour à la saisie</a>
 <br />
-<a href="<?php echo url_for('presence/index') ?>">retour à la saisie</a>
+<br />
+<a href="<?php echo url_for('presence/index') ?>">retour au choix des groupes et séquences</a>
 <br />
 <br />
 <a href="<?php echo url_for('listpresence/index') ?>">vers la liste des

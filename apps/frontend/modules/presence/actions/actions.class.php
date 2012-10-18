@@ -44,7 +44,7 @@ class presenceActions extends sfActions
 							$presences[$uid][$seqid] = $presence;
 						}
 					}
-				}						
+				}
 			}
 		}
 		return $presences;
@@ -81,13 +81,14 @@ class presenceActions extends sfActions
 	}
 	public function executeChoose(sfWebRequest $request)
 	{
+		$this->moduleens = $this->getUser()->getAttribute('moduleens', array());
+		if($this->moduleens == null){
+			$this->forward('choicemodule','index');
+		}
+		$this->groups = StudentGroupTable::getGroups($this->moduleens->getCid());
+		$this->sequences = SequenceTable::getSequences($this->moduleens->getId());
+		
 		if($request->isMethod(sfRequest::POST)){
-			$this->moduleens = $this->getUser()->getAttribute('moduleens', array());
-			if($this->moduleens == null){
-				$this->forward('choicemodule','index');
-			}
-			$this->groups = StudentGroupTable::getGroups($this->moduleens->getCid());
-			$this->sequences = SequenceTable::getSequences($this->moduleens->getId());
 
 			$formparams=$request->getParameter('sequencegroup');
 			if(isset($formparams) && array_key_exists('sequence',$formparams)
@@ -106,7 +107,7 @@ class presenceActions extends sfActions
 				$this->listSeqs .= $this->sequences[$sid]->getName().' ';
 			}
 			$this->getUser()->setAttribute('listSeqs', $this->listSeqs);
-				
+
 			if(isset($formparams) && array_key_exists('group',($formparams))
 					&& is_array($formparams['group']) && count($formparams['group'])){
 				$this->gids = $formparams['group'];
@@ -116,16 +117,31 @@ class presenceActions extends sfActions
 				$this->gids= array();
 			}
 			$this->setUids($this->etudiants);
-			$this->getUser()->setAttribute('uids', $this->uids,array());
+			$this->getUser()->setAttribute('uids', $this->uids);
 			$this->listGroups = '';
 			foreach($this->gids as $gid){
 				$this->listGroups .= $this->groups[$gid]->getName();
 			}
 			$this->getUser()->setAttribute('gids', $this->gids);
 			$this->getUser()->setAttribute('listGroups', $this->listGroups);
-				
+
 			$this->presences = $this->getPresencesWithUids($this->moduleens->getId(),$this->uids,$this->seqids);
 			$this->getUser()->setAttribute('presences', $this->presences);
+		}else{
+			// we come here after a post to choose followed by a post to enter then a get to choose
+			// session must contain all the necessary infomation we just have to prepare it 
+			// for the template
+			$this->presences = $this->getUser()->getAttribute('presences', array());
+			$this->gids = $this->getUser()->getAttribute('gids', array());
+			$this->listGroups = $this->getUser()->getAttribute('listGroups', array() );
+			$this->seqids = $this->getUser()->getAttribute('seqids', array());
+			$this->listSeqs = $this->getUser()->getAttribute('listSeqs', array() );
+			$uids = $this->getUser()->getAttribute('uids',array());
+			if(count($this->gids)){
+				$this->setEtudiantsParGroupe($this->gids);
+			}else{
+				$this->setEtudiantsParAlpha($this->moduleens->getCid());
+			}
 		}
 	}
 
@@ -138,7 +154,7 @@ class presenceActions extends sfActions
 			}
 			$this->groups = StudentGroupTable::getGroups($this->moduleens->getCid());
 			$this->sequences = SequenceTable::getSequences($this->moduleens->getId());
-				
+
 			$postedPresences = $request->getParameter('presence');
 
 			$this->presences = $this->getUser()->getAttribute('presences', array());
@@ -147,7 +163,7 @@ class presenceActions extends sfActions
 			$this->seqids = $this->getUser()->getAttribute('seqids', array());
 			$this->listSeqs = $this->getUser()->getAttribute('listSeqs', array() );
 			$uids = $this->getUser()->getAttribute('uids',array());
-				
+
 			if(count($this->gids)){
 				$this->setEtudiantsParGroupe($this->gids);
 			}else{
@@ -163,8 +179,9 @@ class presenceActions extends sfActions
 	private function modifyPresences($posted){
 		$this->added = array();
 		$this->removed = array();
-		// Fresh information that was not in db must be inserted
 		if(is_array($posted)){
+			// Fresh information that was not in db must be inserted
+
 			foreach($posted as $uid => $values){
 				foreach($values as $seqid => $value){
 					if(!isset($this->presences[$uid]) || !isset($this->presences[$uid][$seqid])){
@@ -181,7 +198,7 @@ class presenceActions extends sfActions
 								$pres = new Attendance();
 								$pres->setSequenceId($seqid);
 								$pres->setPersonId($uid);
-								$pres->setNote(-1);
+								$pres->setNote(1);
 								$pres->save();
 							}
 						}
@@ -189,6 +206,15 @@ class presenceActions extends sfActions
 							$this->added[$uid]= array();
 						}
 						$this->added[$uid][$seqid] = 'new';
+					} else {
+						if( $this->sequences[$seqid]->getNote() === True){
+							// check that the note is the same as in db
+							$pres = $this->presences[$uid][$seqid];
+							if($pres->getNote() != $posted[$uid][$seqid]){
+								$pres->setNote($posted[$uid][$seqid]);
+								$pres->save();
+							}
+						}
 					}
 				}
 			}
@@ -222,12 +248,6 @@ class presenceActions extends sfActions
 					->execute();
 					$pres = $presences[0];
 					$pres->delete();
-				} else {
-					// check that the note is the same as in db
-					if($value->getNote() != $posted[$uid][$seqid]){
-						$value->setNote($posted[$uid][$seqid]);
-						$value->save();
-					}
 				}
 			}
 		}

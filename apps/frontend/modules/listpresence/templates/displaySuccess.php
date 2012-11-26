@@ -24,6 +24,9 @@
 		// create an array of array where index is the presence count
 		// then recreate the array of students
 		$arrayCount = array();
+		for($rang =0; $rang<count($seqids);$rang++){
+			$arrayCount[$rang]= array();
+		}
 		foreach($etudiants as $key => $etudiant){
 
 			$uid = $etudiant->getId();
@@ -35,11 +38,7 @@
 					}
 				}
 			}
-			if(array_key_exists($count, $arrayCount)){
-				$arrayCount[$count][] = $etudiant;
-			} else {
-				$arrayCount[$count] = array();
-			}
+			$arrayCount[$count][] = $etudiant;
 		}
 		$etudiants= array();
 		foreach($arrayCount as $subarray){

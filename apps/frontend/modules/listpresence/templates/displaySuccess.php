@@ -15,11 +15,52 @@
 
 	if(count($seqids)){
 		if(count($seqids) == 1){
-			echo '<br />at sequence ' . $listSeqs;
+			echo '<br />à la séquence ' . $listSeqs;
 		}else {
-			echo '<br />at sequences ' . $listSeqs;
+			echo '<br />aux séquences ' . $listSeqs;
 		}
 	}
+	if($sorted == True){
+		// create an array of array where index is the presence count
+		// then recreate the array of students
+		$arrayCount = array();
+		foreach($etudiants as $key => $etudiant){
+
+			$uid = $etudiant->getId();
+			$count = 0;
+			foreach($seqids as $seqid){
+				if($sequences[$seqid]->getNote()== False){
+					if(isset($attendances[$uid]) && isset($attendances[$uid][$seqid])){
+						$count++;
+					}
+				}
+			}
+			if(array_key_exists($count, $arrayCount)){
+				$arrayCount[$count][] = $etudiant;
+			} else {
+				$arrayCount[$count] = array();
+			}
+		}
+		$etudiants= array();
+		foreach($arrayCount as $subarray){
+			foreach($subarray as $etudiant){
+				$etudiants[] = $etudiant;
+			}
+		}
+	}
+/*	function cmp($a, $b)
+	{
+		$res = strcmp($a[0], $b[0]);
+		if($res == 0) {
+			$res = strcmp($a[1],$b[1]);
+		}
+		return $res;
+	}
+	// sort the content of each sub array alphabetically
+	foreach($arrayCount as $subarray){
+		sor
+	}
+	*/
 	?>
 
 </h1>

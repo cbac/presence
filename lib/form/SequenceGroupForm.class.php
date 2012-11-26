@@ -21,13 +21,15 @@ class SequenceGroupForm extends sfForm
   {
     $this->setWidgets(array(
       'group' => new sfWidgetFormChoice(array('multiple' => true, 'choices'=> $this->choices['group'])),
-      'sequence' => new sfWidgetFormChoice(array('multiple' => true, 'choices'=>$this->choices['sequence']))
+      'sequence' => new sfWidgetFormChoice(array('multiple' => true, 'choices'=>$this->choices['sequence'])),
+      'sorted' => new sfWidgetFormInputCheckbox(array('value_attribute_value' => 'sorted', 'default' => false))		
     ));
 
     $this->setValidators(array(
       'group' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'StudentGroup', 'required' => true)),
       'sequence' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Sequence', 'required' => true)),
-    ));
+	  'sorted' => new sfValidatorBoolean()
+    		));
     
     $this->widgetSchema->setNameFormat('sequencegroup[%s]');
 
@@ -45,7 +47,7 @@ class SequenceGroupForm extends sfForm
 
   public function configure()
   {
-	$this->useFields(array('group','sequence'));
+	$this->useFields(array('group','sequence','sorted'));
 
   }
   public function getName(){

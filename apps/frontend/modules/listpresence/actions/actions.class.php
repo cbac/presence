@@ -31,23 +31,25 @@ class listpresenceActions extends sfActions
 	}
 
 
+
 	public function executeDisplay(sfWebRequest $request)
 	{
 		if($request->isMethod(sfRequest::POST)){
+			$formparams=$request->getParameter('sequencegroup');
+			
+			$this->seqids = $formparams['sequence'];
 			$this->moduleens = $this->getUser()->getAttribute('moduleens', array());
 			if($this->moduleens == null){
 				$this->forward('choicemodule','index');
 			}
 			$this->groups = StudentGroupTable::getGroups($this->moduleens->getCid());
-			
+				
 			$this->sequences = SequenceTable::getSequences($this->moduleens->getId());
-			
+				
 			$this->attendances = AttendanceTable::getAttendances($this->moduleens->getId());
-			
-			$formparams=$request->getParameter('sequencegroup');
 
-			if(isset($formparams) && array_key_exists('sequence',$formparams) 
-				&& is_array($formparams['sequence']) && count($formparams['sequence'])){
+			if(isset($formparams) && array_key_exists('sequence',$formparams)
+					&& is_array($formparams['sequence']) && count($formparams['sequence'])){
 				$this->seqids = $formparams['sequence'];
 			}else{
 				$this->seqids= array();
@@ -59,11 +61,11 @@ class listpresenceActions extends sfActions
 			foreach($this->seqids as $sid){
 				$this->listSeqs .= $this->sequences[$sid].' ';
 			}
-			
+				
 			$this->listGroups = '';
-			$this->gids = array();	
-			if(isset($formparams) && array_key_exists('group',$formparams) 
-				&& is_array($formparams['group']) && count($formparams['group'])){
+			$this->gids = array();
+			if(isset($formparams) && array_key_exists('group',$formparams)
+					&& is_array($formparams['group']) && count($formparams['group'])){
 				$this->gids = $formparams['group'];
 				$this->etudiants = array();
 				foreach($this->gids as $gid){
@@ -87,6 +89,14 @@ class listpresenceActions extends sfActions
 				->addOrderBy('firstname')
 				->execute();
 			}
+			if(isset($formparams) && array_key_exists('sorted',$formparams)
+					&& $formparams['sorted']){
+				//	redirect to countDisplay
+				$this->sorted = True;
+			}else {
+				$this->sorted = False;
+			}
 		}
 	}
+	
 }

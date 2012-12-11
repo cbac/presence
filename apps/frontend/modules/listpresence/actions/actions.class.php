@@ -37,7 +37,6 @@ class listpresenceActions extends sfActions
 		if($request->isMethod(sfRequest::POST)){
 			$formparams=$request->getParameter('sequencegroup');
 			
-			$this->seqids = $formparams['sequence'];
 			$this->moduleens = $this->getUser()->getAttribute('moduleens', array());
 			if($this->moduleens == null){
 				$this->forward('choicemodule','index');

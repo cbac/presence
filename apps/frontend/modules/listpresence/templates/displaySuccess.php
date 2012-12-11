@@ -71,9 +71,6 @@
 		<th>Groupe</th>
 
 		<?php
-		//		foreach($gids as $key => $gid) {
-		//			echo '<input type="hidden" name="gids['.$key.']" value="'.$gid.'" />';
-		//		}
 		$countSeq = array();
 		foreach($seqids as $key => $seqid) {
 			$countSeq[$seqid] = 0;
@@ -82,10 +79,17 @@
 		}
 		?>
 		<th>Nombre de présence</th>
-	</thead>
+		<?php if($sorted == True){
+			echo '<th> nb etudiants </th>';
+		}
+		?>
+		</thead>
 	<tbody>
 
 		<?php
+		if($sorted == True){
+			$nbPres = 0;
+		}
 		foreach($etudiants as $key => $etudiant){
 
 				echo '<tr>';
@@ -113,6 +117,13 @@
 				}
 			}
 			echo '<td>'.$count.'</td>';
+			if($count >= $nbPres){
+				$nbPres = $count;
+				echo '<td>'.count($arrayCount[$nbPres]).'</td>';
+				$nbPres++;
+			}else{
+				echo '<td>&nbsp;</td>';
+			}
 			echo '</tr>';
 		}
 		?>

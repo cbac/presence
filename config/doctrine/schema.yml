@@ -54,7 +54,7 @@ Attendance:
   columns:
     sequence_id :   { type: integer, notnull:true }
     person_id:  { type: integer, notnull:true }
-    note: {type: integer }
+    note: {type: double }
   indexes:
     presence_unique: { type: unique, fields: [ sequence_id, person_id ] }
   relations:

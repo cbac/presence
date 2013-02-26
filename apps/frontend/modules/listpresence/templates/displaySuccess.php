@@ -47,19 +47,6 @@
 			}
 		}
 	}
-/*	function cmp($a, $b)
-	{
-		$res = strcmp($a[0], $b[0]);
-		if($res == 0) {
-			$res = strcmp($a[1],$b[1]);
-		}
-		return $res;
-	}
-	// sort the content of each sub array alphabetically
-	foreach($arrayCount as $subarray){
-		sor
-	}
-	*/
 	?>
 
 </h1>
@@ -117,12 +104,14 @@
 				}
 			}
 			echo '<td>'.$count.'</td>';
-			if($count >= $nbPres){
-				$nbPres = $count;
-				echo '<td>'.count($arrayCount[$nbPres]).'</td>';
-				$nbPres++;
-			}else{
-				echo '<td>&nbsp;</td>';
+			if($sorted == True){
+				if($count >= $nbPres){
+					$nbPres = $count;
+					echo '<td>'.count($arrayCount[$nbPres]).'</td>';
+					$nbPres++;
+				}else{
+					echo '<td>&nbsp;</td>';
+				}
 			}
 			echo '</tr>';
 		}
